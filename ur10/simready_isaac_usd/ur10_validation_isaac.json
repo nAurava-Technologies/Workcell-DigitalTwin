@@ -1,0 +1,63 @@
+{
+    "D:\\NVidia\\Omniverse\\Projects\\Factory\\Inspection-Workcell\\ur10\\simready_isaac_usd\\ur10.usda": {
+        "features_summary": {
+            "FET001_BASE_NEUTRAL": {
+                "dependencies": "[]",
+                "passed": true,
+                "version": "0.1.0"
+            },
+            "FET003_BASE_NEUTRAL": {
+                "dependencies": "[]",
+                "passed": true,
+                "version": "0.1.0"
+            },
+            "FET003_BASE_PHYSX": {
+                "dependencies": "[{'FET003_BASE_NEUTRAL': {'version': '0.1.0'}}]",
+                "passed": true,
+                "version": "0.1.0"
+            },
+            "FET004_ROBOT_PHYSX": {
+                "dependencies": "[]",
+                "passed": true,
+                "version": "0.1.0"
+            },
+            "FET021_ROBOT_CORE_ISAAC": {
+                "dependencies": "[]",
+                "failing requirements": "['RC.004', 'RC.005', 'RC.007', 'RC.009', 'RC.008', 'RC.001']",
+                "passed": false,
+                "version": "0.2.0"
+            },
+            "FET022_DRIVEN_JOINTS_ISAAC": {
+                "dependencies": "[{'FET022_DRIVEN_JOINTS_PHYSX': {'version': '0.1.0'}}]",
+                "failing requirements": "['DJ.010', 'DJ.009', 'DJ.004', 'DJ.008', 'DJ.007', 'DJ.002', 'DJ.005', 'DJ.003', 'DJ.001', 'DJ.006']",
+                "passed": false,
+                "version": "0.1.0"
+            },
+            "FET022_DRIVEN_JOINTS_PHYSX": {
+                "dependencies": "[{'FET004_ROBOT_PHYSX': {'version': '0.1.0'}}]",
+                "failing requirements": "['DJ.003', 'DJ.007', 'DJ.001', 'DJ.002', 'DJ.006', 'DJ.004', 'DJ.005']",
+                "passed": false,
+                "version": "0.1.0"
+            },
+            "FET024_BASE_ARTICULATION_NEUTRAL": {
+                "dependencies": "[]",
+                "passed": true,
+                "version": "0.1.0"
+            },
+            "FET024_BASE_ARTICULATION_PHYSX": {
+                "dependencies": "[{'FET024_BASE_ARTICULATION_NEUTRAL': {'version': '0.1.0'}}]",
+                "failing requirements": "['BA.002']",
+                "passed": false,
+                "version": "0.1.0"
+            },
+            "FET100_BASE_ISAACSIM": {
+                "dependencies": "[{'FET003_BASE_PHYSX': {'version': '0.1.0'}}]",
+                "failing requirements": "['ISA.001']",
+                "passed": false,
+                "version": "0.1.0"
+            }
+        },
+        "profile_id": "Robot-Body-Isaac",
+        "profile_version": "1.0.0"
+    }
+}

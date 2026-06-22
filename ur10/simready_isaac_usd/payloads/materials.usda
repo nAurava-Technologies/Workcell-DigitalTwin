@@ -1,0 +1,217 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (5, 0, 0)
+                double radius = 5
+            }
+            dictionary Perspective = {
+                double3 position = (1.5004366379167011, 1.3728336449089258, 1.0318196779615998)
+                double3 target = (0.39393621877606155, -0.042991688948137874, -0.11782504091955293)
+            }
+            dictionary Right = {
+                double3 position = (0, -5, 0)
+                double radius = 5
+            }
+            dictionary Top = {
+                double3 position = (0, 0, 5)
+                double radius = 5
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            string authoring_layer = "./materials.usd"
+            dictionary locked = {
+            }
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+        }
+    }
+    defaultPrim = "Looks"
+    endTimeCode = 0
+    metersPerUnit = 1
+    startTimeCode = -1
+    timeCodesPerSecond = 60
+    upAxis = "Z"
+)
+
+def Scope "Looks"
+{
+    def Material "Aluminum"
+    {
+        token outputs:mdl:displacement.connect = </Looks/Aluminum/Shader.outputs:out>
+        token outputs:mdl:surface.connect = </Looks/Aluminum/Shader.outputs:out>
+        token outputs:mdl:volume.connect = </Looks/Aluminum/Shader.outputs:out>
+
+        def Shader "Shader"
+        {
+            uniform token info:implementationSource = "sourceAsset"
+            uniform asset info:mdl:sourceAsset = @OmniPBR.mdl@
+            uniform token info:mdl:sourceAsset:subIdentifier = "OmniPBR"
+            color3f inputs:diffuse_color_constant = (1, 1, 1) (
+                customData = {
+                    float3 default = (0.2, 0.2, 0.2)
+                    dictionary range = {
+                        float3 max = (100000, 100000, 100000)
+                        float3 min = (0, 0, 0)
+                    }
+                }
+                displayGroup = "Albedo"
+                displayName = "Base Color"
+            )
+            float inputs:metallic_constant = 0.596 (
+                customData = {
+                    float default = 0
+                    dictionary range = {
+                        float max = 1
+                        float min = 0
+                    }
+                }
+                displayGroup = "Reflectivity"
+                displayName = "Metallic Amount"
+            )
+            float inputs:reflection_roughness_constant = 0.27 (
+                customData = {
+                    float default = 0.5
+                    dictionary range = {
+                        float max = 1
+                        float min = 0
+                    }
+                }
+                displayGroup = "Reflectivity"
+                displayName = "Roughness Amount"
+            )
+            token outputs:out
+        }
+    }
+
+    def Material "Base_fa3"
+    {
+        token outputs:mdl:displacement.connect = </Looks/Base_fa3/Shader.outputs:out>
+        token outputs:mdl:surface.connect = </Looks/Base_fa3/Shader.outputs:out>
+        token outputs:mdl:volume.connect = </Looks/Base_fa3/Shader.outputs:out>
+
+        def Shader "Shader"
+        {
+            uniform token info:implementationSource = "sourceAsset"
+            uniform asset info:mdl:sourceAsset = @OmniPBR.mdl@
+            uniform token info:mdl:sourceAsset:subIdentifier = "OmniPBR"
+            color3f inputs:diffuse_color_constant = (0.12, 0.12, 0.12) (
+                customData = {
+                    float3 default = (0.2, 0.2, 0.2)
+                    dictionary range = {
+                        float3 max = (100000, 100000, 100000)
+                        float3 min = (0, 0, 0)
+                    }
+                }
+                displayGroup = "Albedo"
+                displayName = "Base Color"
+            )
+            token outputs:out
+        }
+    }
+
+    def Material "GrayCastMetal"
+    {
+        token outputs:mdl:displacement.connect = </Looks/GrayCastMetal/Shader.outputs:out>
+        token outputs:mdl:surface.connect = </Looks/GrayCastMetal/Shader.outputs:out>
+        token outputs:mdl:volume.connect = </Looks/GrayCastMetal/Shader.outputs:out>
+
+        def Shader "Shader"
+        {
+            uniform token info:implementationSource = "sourceAsset"
+            uniform asset info:mdl:sourceAsset = @OmniPBR.mdl@
+            uniform token info:mdl:sourceAsset:subIdentifier = "OmniPBR"
+            color3f inputs:diffuse_color_constant = (0.06, 0.06, 0.06) (
+                customData = {
+                    float3 default = (0.2, 0.2, 0.2)
+                    dictionary range = {
+                        float3 max = (100000, 100000, 100000)
+                        float3 min = (0, 0, 0)
+                    }
+                }
+                displayGroup = "Albedo"
+                displayName = "Base Color"
+            )
+            float inputs:reflection_roughness_constant = 0.607 (
+                customData = {
+                    float default = 0.5
+                    dictionary range = {
+                        float max = 1
+                        float min = 0
+                    }
+                }
+                displayGroup = "Reflectivity"
+                displayName = "Roughness Amount"
+            )
+            token outputs:out
+        }
+    }
+
+    def Material "Black"
+    {
+        token outputs:mdl:displacement.connect = </Looks/Black/Shader.outputs:out>
+        token outputs:mdl:surface.connect = </Looks/Black/Shader.outputs:out>
+        token outputs:mdl:volume.connect = </Looks/Black/Shader.outputs:out>
+
+        def Shader "Shader"
+        {
+            uniform token info:implementationSource = "sourceAsset"
+            uniform asset info:mdl:sourceAsset = @OmniPBR.mdl@
+            uniform token info:mdl:sourceAsset:subIdentifier = "OmniPBR"
+            color3f inputs:diffuse_color_constant = (0, 0, 0) (
+                customData = {
+                    float3 default = (0.2, 0.2, 0.2)
+                    dictionary range = {
+                        float3 max = (100000, 100000, 100000)
+                        float3 min = (0, 0, 0)
+                    }
+                }
+                displayGroup = "Albedo"
+                displayName = "Base Color"
+            )
+            token outputs:out
+        }
+    }
+
+    def Material "BlueCastMetal"
+    {
+        token outputs:mdl:displacement.connect = </Looks/BlueCastMetal/Shader.outputs:out>
+        token outputs:mdl:surface.connect = </Looks/BlueCastMetal/Shader.outputs:out>
+        token outputs:mdl:volume.connect = </Looks/BlueCastMetal/Shader.outputs:out>
+
+        def Shader "Shader"
+        {
+            uniform token info:implementationSource = "sourceAsset"
+            uniform asset info:mdl:sourceAsset = @OmniPBR.mdl@
+            uniform token info:mdl:sourceAsset:subIdentifier = "OmniPBR"
+            color3f inputs:diffuse_color_constant = (0.392, 0.539, 0.638) (
+                customData = {
+                    float3 default = (0.2, 0.2, 0.2)
+                    dictionary range = {
+                        float3 max = (100000, 100000, 100000)
+                        float3 min = (0, 0, 0)
+                    }
+                }
+                displayGroup = "Albedo"
+                displayName = "Base Color"
+            )
+            float inputs:reflection_roughness_constant = 0.292 (
+                customData = {
+                    float default = 0.5
+                    dictionary range = {
+                        float max = 1
+                        float min = 0
+                    }
+                }
+                displayGroup = "Reflectivity"
+                displayName = "Roughness Amount"
+            )
+            token outputs:out
+        }
+    }
+}
+

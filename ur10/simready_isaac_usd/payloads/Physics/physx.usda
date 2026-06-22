@@ -1,0 +1,161 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (5, 0, 0)
+                double radius = 5
+            }
+            dictionary Perspective = {
+                double3 position = (2.0633520950302953, 1.1692041936718929, 0.9421380314772982)
+                double3 target = (0.6647425157529152, 0.3443343658648881, 0.2971070808741988)
+            }
+            dictionary Right = {
+                double3 position = (0, -5, 0)
+                double radius = 5
+            }
+            dictionary Top = {
+                double3 position = (0, 0, 5)
+                double radius = 5
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            string authoring_layer = "./physics.usda"
+            dictionary locked = {
+            }
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+        }
+    }
+    defaultPrim = "ur10"
+    endTimeCode = 0
+    metersPerUnit = 1
+    startTimeCode = -1
+    subLayers = [
+        @./physics.usda@
+    ]
+    timeCodesPerSecond = 60
+    upAxis = "Z"
+)
+
+over "ur10"
+{
+    string[] isaac:changelog (
+        displayName = "Changelog"
+    )
+    string isaac:description (
+        displayName = "Description"
+    )
+    token isaac:license (
+        displayName = "License"
+    )
+    string isaac:namespace (
+        displayName = "Namespace"
+    )
+    rel isaac:physics:robotJoints (
+        displayName = "Robot Joints"
+    )
+    rel isaac:physics:robotLinks (
+        displayName = "Robot Links"
+    )
+    token isaac:robotType (
+        displayName = "Robot Type"
+    )
+    string isaac:source (
+        displayName = "Source"
+    )
+    string isaac:version (
+        displayName = "Version"
+    )
+
+    over "root_joint" (
+        prepend apiSchemas = ["PhysxArticulationAPI"]
+    )
+    {
+        bool physxArticulation:enabledSelfCollisions = 0
+        int physxArticulation:solverPositionIterationCount = 32
+        int physxArticulation:solverVelocityIterationCount = 1
+    }
+
+    over "joints"
+    {
+        over "shoulder_pan_joint" (
+            prepend apiSchemas = ["PhysxJointAPI", "PhysxJointAxisAPI:angular", "PhysxDrivePerformanceEnvelopeAPI:angular"]
+        )
+        {
+            bool[] isaac:actuator (
+                displayName = "Actuator"
+            )
+            string isaac:NameOverride (
+                displayName = "Joint Name Override"
+            )
+            token[] isaac:physics:DofOffsetOpOrder (
+                displayName = "Dof Offset Op Order"
+            )
+            float physxDrivePerformanceEnvelope:angular:maxActuatorVelocity = 240
+            float physxJoint:maxJointVelocity = 120
+        }
+
+        over "shoulder_lift_joint" (
+            prepend apiSchemas = ["PhysxJointAPI", "PhysxJointAxisAPI:angular", "PhysxDrivePerformanceEnvelopeAPI:angular"]
+        )
+        {
+            bool[] isaac:actuator (
+                displayName = "Actuator"
+            )
+            string isaac:NameOverride (
+                displayName = "Joint Name Override"
+            )
+            token[] isaac:physics:DofOffsetOpOrder (
+                displayName = "Dof Offset Op Order"
+            )
+            float physxDrivePerformanceEnvelope:angular:maxActuatorVelocity = 240
+            float physxJoint:maxJointVelocity = 120
+        }
+
+        over "elbow_joint" (
+            prepend apiSchemas = ["PhysxJointAPI", "PhysxJointAxisAPI:angular", "PhysxDrivePerformanceEnvelopeAPI:angular"]
+        )
+        {
+            bool[] isaac:actuator (
+                displayName = "Actuator"
+            )
+            string isaac:NameOverride (
+                displayName = "Joint Name Override"
+            )
+            token[] isaac:physics:DofOffsetOpOrder (
+                displayName = "Dof Offset Op Order"
+            )
+            float physxDrivePerformanceEnvelope:angular:maxActuatorVelocity = 360
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "wrist_1_joint" (
+            prepend apiSchemas = ["PhysxJointAPI", "PhysxJointAxisAPI:angular", "PhysxDrivePerformanceEnvelopeAPI:angular"]
+        )
+        {
+            float physxDrivePerformanceEnvelope:angular:maxActuatorVelocity = 360
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "wrist_2_joint" (
+            prepend apiSchemas = ["PhysxJointAPI", "PhysxJointAxisAPI:angular", "PhysxDrivePerformanceEnvelopeAPI:angular"]
+        )
+        {
+            float physxDrivePerformanceEnvelope:angular:maxActuatorVelocity = 360
+            float physxJoint:maxJointVelocity = 180
+        }
+
+        over "wrist_3_joint" (
+            prepend apiSchemas = ["PhysxJointAPI", "PhysxJointAxisAPI:angular", "PhysxDrivePerformanceEnvelopeAPI:angular"]
+        )
+        {
+            float physxDrivePerformanceEnvelope:angular:maxActuatorVelocity = 360
+            float physxJoint:maxJointVelocity = 180
+        }
+    }
+}
+

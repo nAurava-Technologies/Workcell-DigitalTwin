@@ -1,0 +1,321 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (5, 0, 0)
+                double radius = 5
+            }
+            dictionary Perspective = {
+                double3 position = (0.18173853819298824, -0.1889297963908149, 0.24230409941838207)
+                double3 target = (0.07693172486486198, -0.08298867433718148, 0.1449407625441711)
+            }
+            dictionary Right = {
+                double3 position = (0, -5, 0)
+                double radius = 5
+            }
+            dictionary Top = {
+                double3 position = (0, 0, 5)
+                double radius = 5
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            string authoring_layer = "./Robotiq_2F_85_edit.usd"
+            dictionary locked = {
+                bool "./configuration/Robotiq_2F_85_robot.usd" = 1
+            }
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+        }
+    }
+    defaultPrim = "Robotiq_2F_85"
+    
+    endTimeCode = 0
+    metersPerUnit = 1
+    startTimeCode = -1
+    subLayers = [
+        @robot.usda@
+    ]
+    upAxis = "Z"
+)
+
+def Xform "Robotiq_2F_85" (
+    customData = {
+        string[] variantPrimPaths = ["."]
+    }
+    kind = "assembly"
+)
+{
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Xform "base_link" (
+            kind = "group"
+        )
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Xform "visuals" (
+                apiSchemas = None
+                instanceable = true
+                kind = "subcomponent"
+                references = @instances.usda@</Robotiq_2F_85/base_link/visuals>
+            )
+            {
+                quatd xformOp:orient = (0.4999999999999999, 0.5000000000000001, 0.5000000000000001, 0.5000000000000001)
+                float3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+        }
+
+        def Xform "left_outer_knuckle" (
+            kind = "group"
+        )
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Xform "visuals" (
+                instanceable = true
+                kind = "subcomponent"
+                references = @instances.usda@</Robotiq_2F_85/left_outer_knuckle/visuals>
+            )
+            {
+                quatd xformOp:orient = (0.4999999999999999, 0.5000000000000001, 0.5000000000000001, 0.5000000000000001)
+                float3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+        }
+
+        def Xform "left_outer_finger" (
+            kind = "group"
+        )
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Xform "visuals" (
+                instanceable = true
+                kind = "subcomponent"
+                references = @instances.usda@</Robotiq_2F_85/left_outer_finger/visuals>
+            )
+            {
+                quatd xformOp:orient = (0.4999999999999999, 0.5000000000000001, 0.5000000000000001, 0.5000000000000001)
+                float3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+        }
+
+        def Xform "left_inner_finger" (
+            kind = "group"
+        )
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Xform "visuals" (
+                instanceable = false
+                kind = "subcomponent"
+            )
+            {
+                quatd xformOp:orient = (0.4999999999999999, 0.5000000000000001, 0.5000000000000001, 0.5000000000000001)
+                float3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "Defeatured_2F_85_PAD_OPEN_finger4step_01"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    float3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    over Xform "Defeatured_2F_85_PAD_OPEN_finger4step" (
+                        instanceable = true
+                        prepend references = @instances.usda@</Robotiq_2F_85/left_inner_finger/visuals/Defeatured_2F_85_PAD_OPEN_finger4step_01/Defeatured_2F_85_PAD_OPEN_finger4step>
+                    )
+                    {
+                    }
+                }
+
+                def Xform "Defeatured_2F_85_PAD_OPEN_fingertipsstep_01"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    float3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    over Xform "Defeatured_2F_85_PAD_OPEN_fingertipsstep" (
+                        instanceable = true
+                        prepend references = @instances.usda@</Robotiq_2F_85/left_inner_finger/visuals/Defeatured_2F_85_PAD_OPEN_fingertipsstep_01/Defeatured_2F_85_PAD_OPEN_fingertipsstep>
+                    )
+                    {
+                    }
+                }
+            }
+        }
+
+        def Xform "left_inner_knuckle" (
+            kind = "group"
+        )
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Xform "visuals" (
+                instanceable = true
+                kind = "subcomponent"
+                references = @instances.usda@</Robotiq_2F_85/left_inner_knuckle/visuals>
+            )
+            {
+                quatd xformOp:orient = (0.4999999999999999, 0.5000000000000001, 0.5000000000000001, 0.5000000000000001)
+                float3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+        }
+
+        def Xform "right_outer_knuckle" (
+            kind = "group"
+        )
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Xform "visuals" (
+                instanceable = true
+                kind = "subcomponent"
+                references = @instances.usda@</Robotiq_2F_85/left_outer_knuckle/visuals>
+            )
+            {
+                quatd xformOp:orient = (0.4999999999999999, 0.5000000000000001, -0.5000000000000001, -0.5000000000000001)
+                float3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+        }
+
+        def Xform "right_outer_finger" (
+            kind = "group"
+        )
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Xform "visuals" (
+                instanceable = true
+                kind = "subcomponent"
+                references = @instances.usda@</Robotiq_2F_85/left_outer_finger/visuals>
+            )
+            {
+                quatd xformOp:orient = (0.4999999999999999, 0.5000000000000001, -0.5000000000000001, -0.5000000000000001)
+                float3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+        }
+
+        def Xform "right_inner_finger" (
+            kind = "group"
+        )
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Xform "visuals" (
+                instanceable = false
+                kind = "subcomponent"
+            )
+            {
+                quatd xformOp:orient = (0.4999999999999999, 0.5000000000000001, -0.5000000000000001, -0.5000000000000001)
+                float3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "Defeatured_2F_85_PAD_OPEN_finger4step_01"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    float3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    over Xform "Defeatured_2F_85_PAD_OPEN_finger4step" (
+                        instanceable = true
+                        prepend references = @instances.usda@</Robotiq_2F_85/right_inner_finger/visuals/Defeatured_2F_85_PAD_OPEN_finger4step_01/Defeatured_2F_85_PAD_OPEN_finger4step>
+                    )
+                    {
+                    }
+                }
+
+                def Xform "Defeatured_2F_85_PAD_OPEN_fingertipsstep_01"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    float3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    over Xform "Defeatured_2F_85_PAD_OPEN_fingertipsstep" (
+                        instanceable = true
+                        prepend references = @instances.usda@</Robotiq_2F_85/right_inner_finger/visuals/Defeatured_2F_85_PAD_OPEN_fingertipsstep_01/Defeatured_2F_85_PAD_OPEN_fingertipsstep>
+                    )
+                    {
+                    }
+                }
+            }
+        }
+
+        def Xform "right_inner_knuckle" (
+            kind = "group"
+        )
+        {
+            quatd xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Xform "visuals" (
+                instanceable = true
+                kind = "subcomponent"
+                references = @instances.usda@</Robotiq_2F_85/left_inner_knuckle/visuals>
+            )
+            {
+                quatd xformOp:orient = (0.4999999999999999, 0.5000000000000001, -0.5000000000000001, -0.5000000000000001)
+                float3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+        }
+
+        def Scope "Joints"
+        {
+        }
+    }
+
+    def Scope "VisualMaterials"
+    {
+    }

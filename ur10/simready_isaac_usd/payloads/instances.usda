@@ -1,0 +1,760 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (5, 0, 0)
+                double radius = 5
+            }
+            dictionary Perspective = {
+                double3 position = (32.69255971068916, 23.33643138542706, 20.870577108665437)
+                double3 target = (2.1316282072803006e-14, 3.552713678800501e-15, 0.019999999105944966)
+            }
+            dictionary Right = {
+                double3 position = (0, -5, 0)
+                double radius = 5
+            }
+            dictionary Top = {
+                double3 position = (0, 0, 5)
+                double radius = 5
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            string authoring_layer = "./instances.usda"
+            dictionary locked = {
+            }
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+        }
+    }
+    endTimeCode = 0
+    metersPerUnit = 1
+    startTimeCode = -1
+    timeCodesPerSecond = 60
+    upAxis = "Z"
+)
+
+def Scope "visuals"
+{
+    token visibility = "inherited"
+
+    def Xform "base_link"
+    {
+        token visibility = "inherited"
+
+        over "base" (
+            prepend references = @./geometries.usdc@</meshes/base>
+        )
+        {
+            quatd xformOp:orient = (-1, 0, 0, 0)
+            
+            over "ur10_base"
+            {
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                over "Base_fa3" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </visuals/base_link/Looks/Base_fa3> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                }
+
+                over "Aluminum" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </visuals/base_link/Looks/Aluminum> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                }
+            }
+        }
+
+        def Scope "Looks"
+        {
+            over "Aluminum" (
+                references = @./materials.usda@</Looks/Aluminum>
+            )
+            {
+            }
+
+            over "Base_fa3" (
+                references = @./materials.usda@</Looks/Base_fa3>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "shoulder_link"
+    {
+        token visibility = "inherited"
+
+        over "shoulder" (
+            prepend references = @./geometries.usdc@</meshes/shoulder>
+        )
+        {
+            quatd xformOp:orient = (0, -0, 0, 1)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            over "ur10_shoulder"
+            {
+                
+                over "Base_fa3" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </visuals/shoulder_link/Looks/Base_fa3> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                }
+
+                over "Black" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </visuals/shoulder_link/Looks/Black> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                }
+
+                over "BlueCastMetal" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </visuals/shoulder_link/Looks/BlueCastMetal> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                }
+
+                over "GrayCastMetal" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </visuals/shoulder_link/Looks/GrayCastMetal> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                }
+            }
+        }
+
+        def Scope "Looks"
+        {
+            over "Base_fa3" (
+                references = @./materials.usda@</Looks/Base_fa3>
+            )
+            {
+            }
+
+            over "Black" (
+                references = @./materials.usda@</Looks/Black>
+            )
+            {
+            }
+
+            over "BlueCastMetal" (
+                references = @./materials.usda@</Looks/BlueCastMetal>
+            )
+            {
+            }
+
+            over "GrayCastMetal" (
+                references = @./materials.usda@</Looks/GrayCastMetal>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "upper_arm_link"
+    {
+        over "upperarm" (
+            prepend references = @./geometries.usdc@</meshes/upperarm>
+        )
+        {
+            quatd xformOp:orient = (0.4999999701976776, 0.4999999701976776, -0.4999999701976776, -0.4999999701976776)
+            double3 xformOp:translate = (0, 0, 0.22094100713729858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            over "ur10_upper_arm"
+            {
+                
+                over "Aluminum" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </visuals/upper_arm_link/Looks/Aluminum> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                }
+
+                over "Base_fa3" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </visuals/upper_arm_link/Looks/Base_fa3> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                }
+
+                over "Black" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </visuals/upper_arm_link/Looks/Black> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                }
+
+                over "BlueCastMetal" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </visuals/upper_arm_link/Looks/BlueCastMetal> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                }
+
+                over "GrayCastMetal" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </visuals/upper_arm_link/Looks/GrayCastMetal> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                }
+            }
+        }
+
+        def Scope "Looks"
+        {
+            over "Aluminum" (
+                references = @./materials.usda@</Looks/Aluminum>
+            )
+            {
+            }
+
+            over "Base_fa3" (
+                references = @./materials.usda@</Looks/Base_fa3>
+            )
+            {
+            }
+
+            over "Black" (
+                references = @./materials.usda@</Looks/Black>
+            )
+            {
+            }
+
+            over "BlueCastMetal" (
+                references = @./materials.usda@</Looks/BlueCastMetal>
+            )
+            {
+            }
+
+            over "GrayCastMetal" (
+                references = @./materials.usda@</Looks/GrayCastMetal>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "forearm_link"
+    {
+        token visibility = "invisible"
+
+        over "forearm" (
+            prepend references = @./geometries.usdc@</meshes/forearm>
+        )
+        {
+            quatd xformOp:orient = (0.4999999701976776, 0.4999999701976776, -0.4999999701976776, -0.4999999701976776)
+            double3 xformOp:translate = (0, 0, 0.049042001366615295)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            over "ur10_forearm"
+            {
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                over "Aluminum" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </visuals/forearm_link/Looks/Aluminum> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                }
+
+                over "Base_fa3" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </visuals/forearm_link/Looks/Base_fa3> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                }
+
+                over "Black" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </visuals/forearm_link/Looks/Black> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                }
+
+                over "BlueCastMetal" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </visuals/forearm_link/Looks/BlueCastMetal> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                }
+
+                over "GrayCastMetal" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </visuals/forearm_link/Looks/GrayCastMetal> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                }
+            }
+        }
+
+        def Scope "Looks"
+        {
+            over "Aluminum" (
+                references = @./materials.usda@</Looks/Aluminum>
+            )
+            {
+            }
+
+            over "Base_fa3" (
+                references = @./materials.usda@</Looks/Base_fa3>
+            )
+            {
+            }
+
+            over "Black" (
+                references = @./materials.usda@</Looks/Black>
+            )
+            {
+            }
+
+            over "BlueCastMetal" (
+                references = @./materials.usda@</Looks/BlueCastMetal>
+            )
+            {
+            }
+
+            over "GrayCastMetal" (
+                references = @./materials.usda@</Looks/GrayCastMetal>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "wrist_1_link"
+    {
+        token visibility = "invisible"
+
+        over "wrist1" (
+            prepend references = @./geometries.usdc@</meshes/wrist1>
+        )
+        {
+            quatd xformOp:orient = (0.7071067690849304, 0.7071067690849304, 0, 0)
+            double3 xformOp:translate = (0, 0, -0.11490000039339066)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            over "ur10_wrist_1"
+            {
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                over "Base_fa3" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </visuals/wrist_1_link/Looks/Base_fa3> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                }
+
+                over "BlueCastMetal" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </visuals/wrist_1_link/Looks/BlueCastMetal> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                }
+
+                over "GrayCastMetal" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </visuals/wrist_1_link/Looks/GrayCastMetal> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                }
+            }
+        }
+
+        def Scope "Looks"
+        {
+            over "Base_fa3" (
+                references = @./materials.usda@</Looks/Base_fa3>
+            )
+            {
+            }
+
+            over "BlueCastMetal" (
+                references = @./materials.usda@</Looks/BlueCastMetal>
+            )
+            {
+            }
+
+            over "GrayCastMetal" (
+                references = @./materials.usda@</Looks/GrayCastMetal>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "wrist_2_link"
+    {
+        token visibility = "invisible"
+
+        over "wrist2" (
+            prepend references = @./geometries.usdc@</meshes/wrist2>
+        )
+        {
+            double3 xformOp:translate = (0, 0, -0.11580000072717667)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            over "ur10_wrist_2"
+            {
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                over "Base_fa3" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </visuals/wrist_2_link/Looks/Base_fa3> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                }
+
+                over "Black" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </visuals/wrist_2_link/Looks/Black> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                }
+
+                over "BlueCastMetal" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </visuals/wrist_2_link/Looks/BlueCastMetal> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                }
+
+                over "GrayCastMetal" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </visuals/wrist_2_link/Looks/GrayCastMetal> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                }
+            }
+        }
+
+        def Scope "Looks"
+        {
+            over "Base_fa3" (
+                references = @./materials.usda@</Looks/Base_fa3>
+            )
+            {
+            }
+
+            over "Black" (
+                references = @./materials.usda@</Looks/Black>
+            )
+            {
+            }
+
+            over "BlueCastMetal" (
+                references = @./materials.usda@</Looks/BlueCastMetal>
+            )
+            {
+            }
+
+            over "GrayCastMetal" (
+                references = @./materials.usda@</Looks/GrayCastMetal>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "wrist_3_link"
+    {
+        token visibility = "invisible"
+
+        over "wrist3" (
+            prepend references = @./geometries.usdc@</meshes/wrist3>
+        )
+        {
+            quatd xformOp:orient = (0.7071067690849304, 0.7071067690849304, 0, 0)
+            double3 xformOp:translate = (0, 0, -0.09220000356435776)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            over "ur10_wrist_3"
+            {
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                over "Aluminum" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </visuals/wrist_3_link/Looks/Aluminum> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                }
+
+                over "Base_fa3" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </visuals/wrist_3_link/Looks/Base_fa3> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                }
+            }
+        }
+
+        def Scope "Looks"
+        {
+            over "Aluminum" (
+                references = @./materials.usda@</Looks/Aluminum>
+            )
+            {
+            }
+
+            over "Base_fa3" (
+                references = @./materials.usda@</Looks/Base_fa3>
+            )
+            {
+            }
+        }
+    }
+}
+def Scope "colliders"
+{
+    token visibility = "inherited"
+
+    def Xform "base_link"
+    {
+        def Xform "base" (
+            prepend references = @./geometries.usdc@</meshes/base_0>
+        )
+        {
+            uniform token purpose = "guide"
+            quatd xformOp:orient = (-1, 0, 0, -8.742277657347586e-8)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            over "cylinder" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "shoulder_link"
+    {
+        def Xform "shoulder" (
+            prepend references = @./geometries.usdc@</meshes/shoulder_0>
+        )
+        {
+            uniform token purpose = "guide"
+            quatd xformOp:orient = (-4.371138828673793e-8, -0, 0, 1)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            over "cylinder_0" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                bool physics:collisionEnabled = 1
+            }
+
+            over "cylinder" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "upper_arm_link"
+    {
+        def Xform "upperarm" (
+            prepend references = @./geometries.usdc@</meshes/upperarm_0>
+        )
+        {
+            uniform token purpose = "guide"
+            quatd xformOp:orient = (0.4999999701976776, 0.4999999701976776, -0.4999999701976776, -0.4999999701976776)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0.22094100713729858)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            over "cylinder" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                bool physics:collisionEnabled = 1
+            }
+
+            over "cylinder_1" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                bool physics:collisionEnabled = 1
+            }
+
+            over "cylinder_0" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "forearm_link"
+    {
+        def Xform "forearm" (
+            prepend references = @./geometries.usdc@</meshes/forearm_0>
+        )
+        {
+            uniform token purpose = "guide"
+            quatd xformOp:orient = (0.4999999701976776, 0.4999999701976776, -0.4999999701976776, -0.4999999701976776)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0.049042001366615295)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            over "cylinder" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                bool physics:collisionEnabled = 1
+            }
+
+            over "cylinder_0" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                bool physics:collisionEnabled = 1
+            }
+
+            over "cylinder_1" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "wrist_1_link"
+    {
+        def Xform "wrist1" (
+            prepend references = @./geometries.usdc@</meshes/wrist1_0>
+        )
+        {
+            uniform token purpose = "guide"
+            quatd xformOp:orient = (0.7071067690849304, 0.7071067690849304, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, -0.11490000039339066)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            over "cylinder" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                bool physics:collisionEnabled = 1
+            }
+
+            over "cylinder_0" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "wrist_2_link"
+    {
+        def Xform "wrist2" (
+            prepend references = @./geometries.usdc@</meshes/wrist2_0>
+        )
+        {
+            uniform token purpose = "guide"
+            quatd xformOp:orient = (1, 0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, -0.11580000072717667)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            over "cylinder_0" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                bool physics:collisionEnabled = 1
+            }
+
+            over "cylinder" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+
+    def Xform "wrist_3_link"
+    {
+        def Xform "wrist3" (
+            prepend references = @./geometries.usdc@</meshes/wrist3_0>
+        )
+        {
+            uniform token purpose = "guide"
+            quatd xformOp:orient = (0.7071067690849304, 0.7071067690849304, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, -0.09220000356435776)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            over "cylinder" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                bool physics:collisionEnabled = 1
+            }
+        }
+    }
+}
+
+

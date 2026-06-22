@@ -1,0 +1,333 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (5, 0, 0)
+                double radius = 5
+            }
+            dictionary Perspective = {
+                double3 position = (1.4401680794454443, 1.6025564407523176, 1.172915756042719)
+                double3 target = (0.9746324028643787, 0.6154032509480367, 0.5107382476371986)
+            }
+            dictionary Right = {
+                double3 position = (0, -5, 0)
+                double radius = 5
+            }
+            dictionary Top = {
+                double3 position = (0, 0, 5)
+                double radius = 5
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            string authoring_layer = "./geometries.usda"
+            dictionary locked = {
+            }
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+        }
+    }
+    defaultPrim = "ur10"
+    endTimeCode = 0
+    metersPerUnit = 1
+    startTimeCode = -1
+    timeCodesPerSecond = 60
+    upAxis = "Z"
+)
+
+def Xform "ur10" (
+    prepend apiSchemas = ["IsaacRobotAPI"]
+)
+{
+    string[] isaac:changelog (
+        displayName = "Changelog"
+    )
+    string isaac:description (
+        displayName = "Description"
+    )
+    token isaac:license (
+        displayName = "License"
+    )
+    string isaac:namespace (
+        displayName = "Namespace"
+    )
+    rel isaac:physics:robotJoints (
+        displayName = "Robot Joints"
+    )
+    prepend rel isaac:physics:robotJoints = [
+        </ur10/root_joint>,
+        </ur10/joints/shoulder_pan_joint>,
+        </ur10/joints/shoulder_lift_joint>,
+        </ur10/joints/elbow_joint>,
+        </ur10/joints/wrist_1_joint>,
+        </ur10/joints/wrist_2_joint>,
+        </ur10/joints/wrist_3_joint>,
+    ]
+    rel isaac:physics:robotLinks (
+        displayName = "Robot Links"
+    )
+    prepend rel isaac:physics:robotLinks = [
+        </ur10/base_link>,
+        </ur10/shoulder_link>,
+        </ur10/upper_arm_link>,
+        </ur10/forearm_link>,
+        </ur10/wrist_1_link>,
+        </ur10/wrist_2_link>,
+        </ur10/wrist_3_link>,
+    ]
+    token isaac:robotType (
+        displayName = "Robot Type"
+    )
+    string isaac:source (
+        displayName = "Source"
+    )
+    string isaac:version (
+        displayName = "Version"
+    )
+
+    def Scope "joints"
+    {
+        over "shoulder_pan_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "shoulder_lift_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "elbow_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "wrist_1_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "wrist_2_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "wrist_3_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+    }
+
+    def Xform "base_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        string isaac:nameOverride (
+            displayName = "Name Override"
+        )
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Xform "visuals" (
+            instanceable = true
+            prepend references = @./instances.usda@</visuals/base_link>
+        )
+        {
+        }
+
+        def Xform "collisions" (
+            instanceable = true
+            prepend references = @./instances.usda@</colliders/base_link>
+        )
+        {
+        }
+    }
+
+    def Xform "shoulder_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        string isaac:nameOverride
+        quatd xformOp:orient = (-4.371138828673793e-8, -0, 0, 1)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0.12729999423027039)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Xform "visuals" (
+            instanceable = true
+            prepend references = @./instances.usda@</visuals/shoulder_link>
+        )
+        {
+        }
+
+        def Xform "collisions" (
+            instanceable = true
+            prepend references = @./instances.usda@</colliders/shoulder_link>
+        )
+        {
+        }
+    }
+
+    def Xform "upper_arm_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        string isaac:nameOverride
+        quatd xformOp:orient = (-3.0908619663705394e-8, -3.0908619663705394e-8, 0.7071067690849304, 0.7071067690849304)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0.12729999423027039)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Xform "visuals" (
+            instanceable = true
+            prepend references = @./instances.usda@</visuals/upper_arm_link>
+        )
+        {
+        }
+
+        def Xform "collisions" (
+            instanceable = true
+            prepend references = @./instances.usda@</colliders/upper_arm_link>
+        )
+        {
+        }
+    }
+
+    def Xform "forearm_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        string isaac:nameOverride
+        quatd xformOp:orient = (-3.0908619663705394e-8, -3.0908619663705394e-8, 0.7071067690849304, 0.7071067690849304)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0.6119999885559082, 5.3502738239785685e-8, 0.12729999423027039)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Xform "visuals" (
+            instanceable = true
+            prepend references = @./instances.usda@</visuals/forearm_link>
+        )
+        {
+            token visibility = "inherited"
+        }
+
+        def Xform "collisions" (
+            instanceable = true
+            prepend references = @./instances.usda@</colliders/forearm_link>
+        )
+        {
+        }
+    }
+
+    def Xform "wrist_1_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        string isaac:nameOverride
+        quatd xformOp:orient = (-3.0908619663705394e-8, -3.0908619663705394e-8, 0.7071067690849304, 0.7071067690849304)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (1.1842999458312988, 0.16394110023975372, 0.1272999793291092)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Xform "visuals" (
+            instanceable = true
+            prepend references = @./instances.usda@</visuals/wrist_1_link>
+        )
+        {
+            token visibility = "inherited"
+        }
+
+        def Xform "collisions" (
+            instanceable = true
+            prepend references = @./instances.usda@</colliders/wrist_1_link>
+        )
+        {
+        }
+    }
+
+    def Xform "wrist_2_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        string isaac:nameOverride
+        quatd xformOp:orient = (0, -4.371138828673793e-8, 0.9999999403953552, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (1.1842999458312988, 0.16394110023975372, 0.011599980294704437)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Xform "visuals" (
+            instanceable = true
+            prepend references = @./instances.usda@</visuals/wrist_2_link>
+        )
+        {
+            token visibility = "inherited"
+        }
+
+        def Xform "collisions" (
+            instanceable = true
+            prepend references = @./instances.usda@</colliders/wrist_2_link>
+        )
+        {
+        }
+    }
+
+    def Xform "wrist_3_link" (
+        prepend apiSchemas = ["IsaacLinkAPI"]
+    )
+    {
+        string isaac:nameOverride
+        quatd xformOp:orient = (3.090861255827804e-8, -3.0908619663705394e-8, 0.7071067094802856, 0.7071067094802856)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (1.1842999458312988, 0.2561410665512085, 0.011599980294704437)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Xform "flange"
+        {
+            quatd xformOp:orient = (0.4999999701976776, -0.4999999701976776, -0.4999999701976776, -0.4999999701976776)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "ft_frame"
+        {
+            quatd xformOp:orient = (-4.371138828673793e-8, 1, 0, -0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "visuals" (
+            instanceable = true
+            prepend references = @./instances.usda@</visuals/wrist_3_link>
+        )
+        {
+            token visibility = "inherited"
+        }
+
+        def Xform "collisions" (
+            instanceable = true
+            prepend references = @./instances.usda@</colliders/wrist_3_link>
+        )
+        {
+        }
+    }
+
+    over "root_joint" (
+        prepend apiSchemas = ["IsaacJointAPI"]
+    )
+    {
+    }
+}
+

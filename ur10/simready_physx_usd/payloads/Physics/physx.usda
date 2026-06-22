@@ -1,0 +1,117 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (5, 0, 0)
+                double radius = 5
+            }
+            dictionary Perspective = {
+                double3 position = (2.0633520950302953, 1.1692041936718929, 0.9421380314772982)
+                double3 target = (0.6647425157529152, 0.3443343658648881, 0.2971070808741988)
+            }
+            dictionary Right = {
+                double3 position = (0, -5, 0)
+                double radius = 5
+            }
+            dictionary Top = {
+                double3 position = (0, 0, 5)
+                double radius = 5
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            string authoring_layer = "./physics.usda"
+            dictionary locked = {
+            }
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+        }
+    }
+    defaultPrim = "ur10"
+    endTimeCode = 0
+    metersPerUnit = 1
+    startTimeCode = -1
+    subLayers = [
+        @./physics.usda@
+    ]
+    timeCodesPerSecond = 60
+    upAxis = "Z"
+)
+
+over "ur10"
+{
+    over "base_link" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    )
+    {
+        point3f physics:centerOfMass = (0, 0, 0)
+        float3 physics:diagonalInertia = (0.006106331, 0.006106331, 0.01125)
+        float physics:mass = 4
+        quatf physics:principalAxes = (1, 0, 0, 0)
+
+        def Xform "collisions" (
+            instanceable = true
+            prepend references = </colliders/base_link>
+        )
+        {
+        }
+    }
+
+    over "root_joint" (
+        prepend apiSchemas = ["PhysxArticulationAPI"]
+    )
+    {
+        bool physxArticulation:enabledSelfCollisions = 0
+        int physxArticulation:solverPositionIterationCount = 32
+        int physxArticulation:solverVelocityIterationCount = 1
+    }
+
+    over "joints"
+    {
+        over "shoulder_pan_joint" (
+            prepend apiSchemas = ["PhysxJointAPI", "PhysxJointAxisAPI:angular", "PhysxDrivePerformanceEnvelopeAPI:angular"]
+        )
+        {
+            float physxDrivePerformanceEnvelope:angular:maxActuatorVelocity = 120
+        }
+
+        over "shoulder_lift_joint" (
+            prepend apiSchemas = ["PhysxJointAPI", "PhysxJointAxisAPI:angular", "PhysxDrivePerformanceEnvelopeAPI:angular"]
+        )
+        {
+            float physxDrivePerformanceEnvelope:angular:maxActuatorVelocity = 120
+        }
+
+        over "elbow_joint" (
+            prepend apiSchemas = ["PhysxJointAPI", "PhysxJointAxisAPI:angular", "PhysxDrivePerformanceEnvelopeAPI:angular"]
+        )
+        {
+            float physxDrivePerformanceEnvelope:angular:maxActuatorVelocity = 180
+        }
+
+        over "wrist_1_joint" (
+            prepend apiSchemas = ["PhysxJointAPI", "PhysxJointAxisAPI:angular", "PhysxDrivePerformanceEnvelopeAPI:angular"]
+        )
+        {
+            float physxDrivePerformanceEnvelope:angular:maxActuatorVelocity = 180
+        }
+
+        over "wrist_2_joint" (
+            prepend apiSchemas = ["PhysxJointAPI", "PhysxJointAxisAPI:angular", "PhysxDrivePerformanceEnvelopeAPI:angular"]
+        )
+        {
+            float physxDrivePerformanceEnvelope:angular:maxActuatorVelocity = 180
+        }
+
+        over "wrist_3_joint" (
+            prepend apiSchemas = ["PhysxJointAPI", "PhysxJointAxisAPI:angular", "PhysxDrivePerformanceEnvelopeAPI:angular"]
+        )
+        {
+            float physxDrivePerformanceEnvelope:angular:maxActuatorVelocity = 180
+        }
+    }
+}
+

@@ -1,0 +1,34 @@
+{
+    "D:\\NVidia\\Omniverse\\Projects\\Factory\\Inspection-Workcell\\ur10\\simready_usd\\ur10.usda": {
+        "features_summary": {
+            "FET001_BASE_NEUTRAL": {
+                "dependencies": "[]",
+                "passed": true,
+                "version": "0.1.0"
+            },
+            "FET003_BASE_NEUTRAL": {
+                "dependencies": "[]",
+                "passed": true,
+                "version": "0.1.0"
+            },
+            "FET004_BASE_NEUTRAL": {
+                "dependencies": "[{'FET003_BASE_NEUTRAL': {'version': '0.1.0'}}]",
+                "passed": true,
+                "version": "0.1.0"
+            },
+            "FET022_DRIVEN_JOINTS_NEUTRAL": {
+                "dependencies": "[{'FET004_BASE_NEUTRAL': {'version': '0.1.0'}}]",
+                "failing requirements": "['DJ.003', 'DJ.002', 'DJ.001']",
+                "passed": false,
+                "version": "0.1.0"
+            },
+            "FET024_BASE_ARTICULATION_NEUTRAL": {
+                "dependencies": "[]",
+                "passed": true,
+                "version": "0.1.0"
+            }
+        },
+        "profile_id": "Robot-Body-Neutral",
+        "profile_version": "1.0.0"
+    }
+}
