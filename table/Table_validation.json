@@ -1,6 +1,11 @@
 {
-    "D:\\NVidia\\Omniverse\\Projects\\Factory\\Inspection-Workcell\\ur10\\simready_usd\\ur10.usda": {
+    "D:\\NVidia\\Omniverse\\Projects\\Factory\\Workcell-DigitalTwin\\table\\Table.usd": {
         "features_summary": {
+            "FET000_CORE": {
+                "dependencies": "[]",
+                "passed": true,
+                "version": "0.1.0"
+            },
             "FET001_BASE_NEUTRAL": {
                 "dependencies": "[]",
                 "passed": true,
@@ -13,22 +18,22 @@
             },
             "FET004_BASE_NEUTRAL": {
                 "dependencies": "[{'FET003_BASE_NEUTRAL': {'version': '0.1.0'}}]",
-                "passed": true,
-                "version": "0.1.0"
-            },
-            "FET022_DRIVEN_JOINTS_NEUTRAL": {
-                "dependencies": "[{'FET004_BASE_NEUTRAL': {'version': '0.1.0'}}]",
-                "failing requirements": "['DJ.001', 'DJ.003', 'DJ.002']",
+                "failing requirements": "['RB.MB.001']",
                 "passed": false,
                 "version": "0.1.0"
             },
-            "FET024_BASE_ARTICULATION_NEUTRAL": {
+            "FET005_BASE_NEUTRAL": {
+                "dependencies": "[]",
+                "passed": true,
+                "version": "0.1.0"
+            },
+            "FET006_BASE_MDL": {
                 "dependencies": "[]",
                 "passed": true,
                 "version": "0.1.0"
             }
         },
-        "profile_id": "Robot-Body-Neutral",
+        "profile_id": "Prop-Robotics-Neutral",
         "profile_version": "1.0.0"
     }
 }
