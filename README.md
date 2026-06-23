@@ -47,7 +47,7 @@ To convert raw CAD models into simulation-ready assets (e.g. the Table), we foll
 1.  **CAD-to-USD Conversion:** 
     Converted STEP geometry to USD using the Omniverse CAD Converter, forcing a unit scale of meters (`metersPerUnit = 1.0`), Z-Up axis, and disabling instancing (`instancingStyle = 0`) to preserve raw mesh access.
 2.  **Metadata & Kind Setup:** 
-    Applied the standard `set_asset_metadata.py` script to set the USD Model Kind of the root asset to `component` and write validation profile tags (`Prop-Robotics-Neutral`) to the root layer's `customLayerData`.
+    Set the USD Model Kind of the root asset to `component` and write validation profile tags (`Prop-Robotics-Neutral`) to the root layer's `customLayerData`.
 3.  **Rigid Body & Collider Setup:** 
     Configured the mesh as a dynamic rigid body by applying `UsdPhysics.RigidBodyAPI`, setting a mass of `20.0 kg` (via `UsdPhysics.MassAPI`), and assigning a collider with a `convexHull` approximation.
 4.  **Material Binding:** 
