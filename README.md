@@ -76,8 +76,8 @@ This project is licensed under the Apache License 2.0. However, this license **d
 These assets are the property of their respective owners and are excluded from the Apache 2.0 terms of this repository. 
 
 ### References to Excluded Assets
-Please review the licensing terms:
+Please review and accept the licensing terms before using these assets:
 
-- For **UR10** and **Robotiq** assets from their official repository 👉 https://github.com/NVIDIA/simready-foundation/tree/main
+- For **UR10** and **Robotiq** assets refer to https://github.com/NVIDIA/simready-foundation/tree/main
 - For **Conveyor Model** from NVIDIA Isaacsim, refer to [https://github.com/isaac-sim/IsaacSim](https://github.com/isaac-sim/IsaacSim) and [https://catalog.ngc.nvidia.com/orgs/nvidia/containers/isaac-sim](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/isaac-sim)
 
