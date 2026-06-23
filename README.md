@@ -1,6 +1,6 @@
 # Workcell Digital Twin Project
 
-This repository contains the USD assembly and individual digital twin components for a factory workcell, configured for **SimReady** validation of **OpenUSD** assets.
+This repository contains the USD assembly and individual digital twin components for a factory workcell, configured for **SimReady** validation of **OpenUSD** assets. The objective is to provide sample assets that adhere to **OpenUSDs SimReady specification** https://github.com/NVIDIA/simready-foundation/tree/main
 
 ## Overview
 
