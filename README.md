@@ -63,3 +63,22 @@ To convert raw CAD models into simulation-ready assets (e.g. the Table), we foll
 1.  Open **NVIDIA Omniverse (USD Composer / Create)** or **Isaac Sim**.
 2.  Open the assembly stage [workcell_digitaltwin.usd](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/workcell_digitaltwin.usd).
 3.  In **Isaac Sim** Click **Play** to start the simulation and observe the rigid body dynamics and joint behaviors.
+
+
+## Licensing & Third-Party Assets
+
+This project is licensed under the Apache License 2.0. However, this license **does not apply** to the following third-party assets located in the repository:
+
+* **UR10 Robot Model** (`ur10`)
+* **Robotiq 2F-85 Gripper Model** (`Robotiq/2F-85`)
+* **Conveyor Model** (`conveyor`)
+
+These assets are the property of their respective owners and are excluded from the Apache 2.0 terms of this repository. 
+
+### Sourcing Excluded Assets
+To run this workcell simulation, you must independently retrieve **UR10** and **Robotiq** assets from their official upstream repository. Please clone or download them from:
+👉 https://github.com/NVIDIA/simready-foundation/tree/main
+
+**Conveyor Model** is derived from NVIDIA Isaacsim assets please refer to [https://github.com/NVIDIA/isaac-sim](https://github.com/NVIDIA/isaac-sim) and [https://catalog.ngc.nvidia.com/orgs/nvidia/containers/isaac-sim](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/isaac-sim)
+
+Place the retrieved asset folders into their respective directories before launching the simulation.
