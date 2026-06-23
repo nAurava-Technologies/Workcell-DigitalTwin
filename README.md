@@ -75,10 +75,9 @@ This project is licensed under the Apache License 2.0. However, this license **d
 
 These assets are the property of their respective owners and are excluded from the Apache 2.0 terms of this repository. 
 
-### Sourcing Excluded Assets
-To run this workcell simulation, you must independently retrieve **UR10** and **Robotiq** assets from their official upstream repository. Please clone or download them from:
-👉 https://github.com/NVIDIA/simready-foundation/tree/main
+### References to Excluded Assets
+Please review the licensing terms:
 
-**Conveyor Model** is derived from NVIDIA Isaacsim assets please refer to [https://github.com/isaac-sim/IsaacSim](https://github.com/isaac-sim/IsaacSim) and [https://catalog.ngc.nvidia.com/orgs/nvidia/containers/isaac-sim](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/isaac-sim)
+- For **UR10** and **Robotiq** assets from their official repository 👉 https://github.com/NVIDIA/simready-foundation/tree/main
+- For **Conveyor Model** from NVIDIA Isaacsim, refer to [https://github.com/isaac-sim/IsaacSim](https://github.com/isaac-sim/IsaacSim) and [https://catalog.ngc.nvidia.com/orgs/nvidia/containers/isaac-sim](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/isaac-sim)
 
-Place the retrieved asset folders into their respective directories before launching the simulation.
