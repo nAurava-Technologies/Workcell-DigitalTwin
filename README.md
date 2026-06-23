@@ -12,7 +12,7 @@ All assets are structured following the **SimReady specifications** to ensure ph
 
 ```
 Workcell-DigitalTwin/
-├── workcell_digitaltwin.usd    # Main assembly composition stage
+├── workcell_digitaltwin.usd    # Main assembly composition stage depicting inspection workcell within a manufacturing industry
 ├── ur10/                       # UR10 Robot arm assembly & config
 ├── Robotiq/                    # Robotiq robot gripper
 ├── robot_base/                 # Mounting base for the robot arm
@@ -21,8 +21,9 @@ Workcell-DigitalTwin/
 │   ├── Table.usd               # Processed OpenUSD asset
 │   ├── Table_validation.json   # Validation summary output
 ├── bin/                        # Part storage bin
-│   ├── Bin.usd
-│   └── Bin_validation.json
+│   ├── Bin.step                # Source CAD geometry
+│   ├── Bin.usd                 # Processed OpenUSD asset
+│   └── Bin_validation.json     # Validation summary output
 ├── conveyor/                   # Conveyor belt assembly
 ├── EVBatteryPack/              # EV Battery Pack model
 ├── xray_scanner/               # X-ray inspection system model
@@ -42,7 +43,7 @@ Workcell-DigitalTwin/
 
 ## SimReady Processing Workflow
 
-To convert raw CAD models into simulation-ready assets (e.g. the Table), we followed this automation workflow:
+To convert raw CAD models into simulation-ready assets (e.g. the Table), we followed this workflow:
 
 1.  **CAD-to-USD Conversion:** 
     Converted STEP geometry to USD using the Omniverse CAD Converter, forcing a unit scale of meters (`metersPerUnit = 1.0`), Z-Up axis, and disabling instancing (`instancingStyle = 0`) to preserve raw mesh access.
@@ -52,7 +53,7 @@ To convert raw CAD models into simulation-ready assets (e.g. the Table), we foll
     Configured the mesh as a dynamic rigid body by applying `UsdPhysics.RigidBodyAPI`, setting a mass of `20.0 kg` (via `UsdPhysics.MassAPI`), and assigning a collider with a `convexHull` approximation.
 4.  **Material Binding:** 
     Bound standard Omniverse `Looks/OmniPBR` materials to the mesh for both visual render purposes and physics material purposes (governing friction and restitution).
-5.  **Grasp Vector Authoring:** 
+5.  **Grasp Vector Authoring (For Props):** 
     Added visual guide lines (represented by `BasisCurves` with guide purpose) to serve as robotic gripper approach axes.
 6.  **SimReady Validation:** 
     Validated the asset against the target profile using `simready-validate` to generate `Table_validation.json` (machine-readable summary).

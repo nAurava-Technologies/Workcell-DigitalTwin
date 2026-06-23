@@ -28,6 +28,34 @@
                             string version = "0.1.0"
                         }
                     }
+                    dictionary "2026-06-23" = {
+                        dictionary FET001_BASE_NEUTRAL = {
+                            string dependencies = "[]"
+                            bool passed = 1
+                            string version = "0.1.0"
+                        }
+                        dictionary FET003_BASE_NEUTRAL = {
+                            string dependencies = "[]"
+                            bool passed = 1
+                            string version = "0.1.0"
+                        }
+                        dictionary FET004_BASE_NEUTRAL = {
+                            string dependencies = "[{'FET003_BASE_NEUTRAL': {'version': '0.1.0'}}]"
+                            bool passed = 1
+                            string version = "0.1.0"
+                        }
+                        dictionary FET022_DRIVEN_JOINTS_NEUTRAL = {
+                            string dependencies = "[{'FET004_BASE_NEUTRAL': {'version': '0.1.0'}}]"
+                            string "failing requirements" = "['DJ.003', 'DJ.001', 'DJ.002']"
+                            bool passed = 0
+                            string version = "0.1.0"
+                        }
+                        dictionary FET024_BASE_ARTICULATION_NEUTRAL = {
+                            string dependencies = "[]"
+                            bool passed = 1
+                            string version = "0.1.0"
+                        }
+                    }
                 }
             }
         }
