@@ -12,34 +12,50 @@ All assets are structured following the **SimReady specifications** to ensure ph
 
 ```
 Workcell-DigitalTwin/
-├── workcell_digitaltwin.usd    # Main assembly composition stage depicting inspection workcell within a manufacturing industry
-├── ur10/                       # UR10 Robot arm assembly & config
-├── Robotiq/                    # Robotiq robot gripper
-├── robot_base/                 # Mounting base for the robot arm
-├── table/                      # Table component (SimReady compliant)
-│   ├── Table.step              # Source CAD geometry
-│   ├── Table.usd               # Processed OpenUSD asset
-│   ├── Table_validation.json   # Validation summary output
-├── bin/                        # Part storage bin
-│   ├── Bin.step                # Source CAD geometry
-│   ├── Bin.usd                 # Processed OpenUSD asset
-│   └── Bin_validation.json     # Validation summary output
-├── conveyor/                   # Conveyor belt assembly
-├── EVBatteryPack/              # EV Battery Pack model
-├── xray_scanner/               # X-ray inspection system model
-├── workcell/                   # Miscellaneous workcell geometry
-└── README.md                   # Project documentation
+├── workcell_digitaltwin.usd           # Main assembly composition root stage
+│
+├── layers/                            # Domain-Specific Workstream Layer Stack
+│   ├── layout.usda                    # Assembly hierarchy, Xforms, component payloads
+│   ├── physics.usda                   # PhysicsScene, ground plane, inter-machine colliders
+│   ├── lighting.usda                  # Ambient and task lighting (DomeLight, RectLight), render settings
+│   └── automation.usda                # OmniGraph ActionGraph for conveyor logic & sensor gates
+│
+├── components/                        # Discrete, Reusable Component Models
+│   ├── robot_station/                 # Modular Robot Station assembly
+│   │   ├── robot_station.usd          # Station Assembly with EndEffector variant set (Robotiq_2F_85 vs None)
+│   │   ├── ur10/                      # UR10 Robot arm assembly & config
+│   │   ├── Robotiq/                   # Robotiq robot gripper
+│   │   └── robot_base/                # Mounting base for the robot arm
+│   ├── fixtures/                      # Workcell fixtures and containers
+│   │   ├── table/                     # Table component (SimReady compliant)
+│   │   │   ├── Table.step             # Source CAD geometry
+│   │   │   ├── Table.usd              # Processed OpenUSD asset
+│   │   │   └── Table_validation.json  # Validation summary output
+│   │   └── bin/                       # Part storage bin
+│   │       ├── Bin.step               # Source CAD geometry
+│   │       ├── Bin.usd                # Processed OpenUSD asset
+│   │       └── Bin_validation.json    # Validation summary output
+│   ├── conveyor/                      # Conveyor belt assembly
+│   ├── ev_battery_pack/               # EV Battery Pack model with PointInstancer cells
+│   ├── xray_scanner/                  # X-ray inspection system model
+│   └── enclosure/                     # Workcell perimeter safety fencing
+│
+├── materials/                         # Localized Core Material Library (MDL)
+└── README.md                          # Project documentation
 ```
 
 ## Main Component Assets
 
-*   **UR10 (`ur10/`):** The robot arm asset configured with physics joints and joint limits for kinematic and dynamic control.
-*   **Robotiq (`Robotiq/`):** The gripper attachment for grasping parts.
-*   **Table (`table/`):** A SimReady table asset converted from CAD with convex hull colliders, mass, and grasp guides.
-*   **Bin (`bin/`):** A storage bin configured with colliders and physics materials for part collection.
-*   **Conveyor (`conveyor/`):** Conveyor assembly used to transport parts in the workcell.
-*   **X-Ray Scanner (`xray_scanner/`):** Inspection equipment model for scanning EV battery packs.
-*   **EV Battery Pack (`EVBatteryPack/`):** The primary object of interest for assembly manipulation.
+*   **Robot Station (`components/robot_station/robot_station.usd`):** Assembly entrypoint for the manipulator station featuring an `EndEffector` variant set (`Robotiq_2F_85`, `Vacuum_Gripper`, `None`) and `ToolMountJoint`.
+*   **UR10 (`components/robot_station/ur10/`):** The robot arm asset configured with physics joints and joint limits for kinematic and dynamic control.
+*   **Robotiq (`components/robot_station/Robotiq/`):** The gripper attachment for grasping parts.
+*   **Robot Base (`components/robot_station/robot_base/`):** Mounting pedestal for the robot arm.
+*   **Table (`components/fixtures/table/`):** A SimReady table asset converted from CAD with convex hull colliders, mass, and grasp guides.
+*   **Bin (`components/fixtures/bin/`):** A storage bin configured with colliders and physics materials for part collection.
+*   **Conveyor (`components/conveyor/`):** Conveyor assembly used to transport parts in the workcell.
+*   **X-Ray Scanner (`components/xray_scanner/`):** Inspection equipment model for scanning EV battery packs.
+*   **EV Battery Pack (`components/ev_battery_pack/`):** The primary object of interest for assembly manipulation, optimized with `UsdGeomPointInstancer`.
+*   **Enclosure (`components/enclosure/`):** Modular safety fence panels guarding the automated workcell.
 
 ## SimReady Processing Workflow
 
@@ -69,9 +85,9 @@ To convert raw CAD models into simulation-ready assets (e.g. the Table), we foll
 
 This project is licensed under the Apache License 2.0. However, this license **does not apply** to the following third-party assets located in the repository:
 
-* **UR10 Robot Model** (`ur10`)
-* **Robotiq 2F-85 Gripper Model** (`Robotiq/2F-85`)
-* **Conveyor Model** (`conveyor`)
+* **UR10 Robot Model** (`components/robot_station/ur10`)
+* **Robotiq 2F-85 Gripper Model** (`components/robot_station/Robotiq/2F-85`)
+* **Conveyor Model** (`components/conveyor`)
 
 These assets are the property of their respective owners and are excluded from the Apache 2.0 terms of this repository. 
 

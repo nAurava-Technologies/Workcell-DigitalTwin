@@ -1,0 +1,507 @@
+#usda 1.0
+(
+    defaultPrim = "World"
+    endTimeCode = 1000000
+    metersPerUnit = 1
+    startTimeCode = 0
+    timeCodesPerSecond = 60
+    upAxis = "Z"
+)
+
+def Xform "World" (
+    prepend apiSchemas = ["GeomModelAPI"]
+    kind = "assembly"
+)
+{
+    float3[] extentsHint = [(-48.422344, -50, -0.001842), (51.577656, 50, 5.794483), (-48.422344, -50, -0.001842), (51.577656, 50, 5.794483), (-48.422344, -50, -0.001842), (51.577656, 50, 5.794483), (-5.342265, -9.258788, -29.471994), (9.833739, 8.241221, 31.727993)]
+
+    def "conveyor1" (
+        prepend apiSchemas = ["GeomModelAPI"]
+        kind = "component"
+        prepend payload = @../components/conveyor/conveyor.usd@
+    )
+    {
+        float3[] extentsHint = [(-0.000001, -0.575491, 0), (2.000671, 0.575461, 2.310949), (-0.000001, -0.575491, 0), (2.000671, 0.575461, 2.310949), (-0.000001, -0.575491, 0), (2.000671, 0.575461, 2.310949), (0.9978, -0.4629, 2.3084), (1.0028, 0.4629, 2.3134)]
+        quatd xformOp:orient = (0.7071067811865475, 0, 0, 0.7071067811865476)
+        double3 xformOp:scale = (1.5, 0.5, 0.6)
+        double3 xformOp:translate = (2.145834554409493, 0.30470886444668377, 2.5091040356528538e-14)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "SM_ConveyorBelt_A06_02"
+        {
+            token visibility = "inherited"
+
+            def PhysicsFixedJoint "FixedJoint" (
+                active = false
+            )
+            {
+                rel physics:body0 = </World/chute>
+                rel physics:body1 = </World/conveyor1/SM_ConveyorBelt_A06_02>
+                float physics:breakForce = 3.4028235e38
+                float physics:breakTorque = 3.4028235e38
+                point3f physics:localPos0 = (-114.35047, 0.5463808, -0.47984397)
+                point3f physics:localPos1 = (0, 0, 0)
+                quatf physics:localRot0 = (0.5, -0.5, 0.5, 0.5)
+                quatf physics:localRot1 = (1, 0, 0, 0)
+            }
+        }
+
+        over "Belt"
+        {
+            vector3f physics:velocity = (0, -1, 0)
+        }
+    }
+
+    def "xray_scanner" (
+        prepend apiSchemas = ["GeomModelAPI"]
+        displayName = "xray_scanner"
+        kind = "component"
+        prepend payload = @../components/xray_scanner/xray_scanner.usd@
+    )
+    {
+        float3[] extentsHint = [(-0.18, -0.1, -0.262961), (0.18, 0.1, 0.137039), (-0.18, -0.1, -0.262961), (0.18, 0.1, 0.137039), (-0.18, -0.1, -0.262961), (0.18, 0.1, 0.137039), (-0.005, -0.215, 0.055), (0.005, 0.215, 0.065)]
+        token visibility = "inherited"
+        quatf xformOp:orient = (6.123234e-17, 0, 0, 1)
+        float3 xformOp:scale = (5, 4, 4)
+        double3 xformOp:scale:unitsResolve = (1, 1, 1)
+        double3 xformOp:translate = (2.104976412191481, 2.129797081195649, 1.05)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale", "xformOp:scale:unitsResolve"]
+
+        over "xray_scanner"
+        {
+            over "tn__Part1_f5"
+            {
+                over "Mesh" (
+                    prepend apiSchemas = ["PhysxRigidBodyAPI"]
+                )
+                {
+                    bool physics:collisionEnabled = 0
+                    bool physxRigidBody:disableGravity = 1
+                    int physxRigidBody:lockedPosAxis = 7
+                    int physxRigidBody:lockedRotAxis = 7
+                }
+            }
+        }
+    }
+
+    def "RobotStation" (
+        prepend apiSchemas = ["GeomModelAPI"]
+        kind = "assembly"
+        prepend payload = @../components/robot_station/robot_station.usd@
+    )
+    {
+        float3[] extentsHint = [(-0.25, -1.230202, 0), (0.392275, 0.25, 1.21523), (-0.25, -1.230202, 0), (0.392275, 0.25, 1.21523), (-0.25, -1.230202, 0), (0.392275, 0.25, 1.21523), (-7.500002, -8.750005, -29.471994), (7.676002, 8.750005, 31.727993)]
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (2.1577374341470077, -0.5087832438649182, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "ur10"
+        {
+            over "base_link"
+            {
+            }
+
+            over "shoulder_link"
+            {
+            }
+
+            over "upper_arm_link"
+            {
+            }
+
+            over "forearm_link"
+            {
+            }
+
+            over "wrist_1_link"
+            {
+            }
+
+            over "wrist_2_link"
+            {
+            }
+
+            over "wrist_3_link"
+            {
+            }
+
+            over "joints"
+            {
+                over "shoulder_pan_joint"
+                {
+                    float state:angular:physics:position = 0
+                    float state:angular:physics:velocity = 0
+                }
+
+                over "shoulder_lift_joint"
+                {
+                    float state:angular:physics:position = 0
+                    float state:angular:physics:velocity = 0
+                }
+
+                over "elbow_joint"
+                {
+                    float state:angular:physics:position = 0
+                    float state:angular:physics:velocity = 0
+                }
+
+                over "wrist_1_joint"
+                {
+                    float state:angular:physics:position = 0
+                    float state:angular:physics:velocity = 0
+                }
+
+                over "wrist_2_joint"
+                {
+                    float state:angular:physics:position = 0
+                    float state:angular:physics:velocity = 0
+                }
+
+                over "wrist_3_joint"
+                {
+                    float state:angular:physics:position = 0
+                    float state:angular:physics:velocity = 0
+                }
+            }
+        }
+
+        over "Robotiq_2F_85"
+        {
+            over "base_link"
+            {
+            }
+
+            over "left_outer_knuckle"
+            {
+            }
+
+            over "left_outer_finger"
+            {
+            }
+
+            over "left_inner_finger"
+            {
+            }
+
+            over "left_inner_knuckle"
+            {
+            }
+
+            over "right_outer_knuckle"
+            {
+            }
+
+            over "right_outer_finger"
+            {
+            }
+
+            over "right_inner_finger"
+            {
+            }
+
+            over "right_inner_knuckle"
+            {
+            }
+
+            over "Joints"
+            {
+                over "finger_joint"
+                {
+                    float state:angular:physics:position = 0
+                    float state:angular:physics:velocity = 0
+                }
+
+                over "right_outer_knuckle_joint"
+                {
+                    float state:angular:physics:position = 0
+                    float state:angular:physics:velocity = 0
+                }
+
+                over "left_inner_finger_joint"
+                {
+                    float state:angular:physics:position = 0
+                    float state:angular:physics:velocity = 0
+                }
+
+                over "right_inner_finger_joint"
+                {
+                    float state:angular:physics:position = 0
+                    float state:angular:physics:velocity = 0
+                }
+
+                over "left_inner_finger_knuckle_joint"
+                {
+                    float state:angular:physics:position = 0
+                    float state:angular:physics:velocity = 0
+                }
+
+                over "right_inner_finger_knuckle_joint"
+                {
+                    float state:angular:physics:position = 0
+                    float state:angular:physics:velocity = 0
+                }
+            }
+        }
+
+        over "Robot_Base"
+        {
+            over "Robot_Base"
+            {
+                over "tn__Part1_f5"
+                {
+                    over "Mesh"
+                    {
+                    }
+                }
+            }
+        }
+    }
+
+    def Xform "Workcell" (
+        kind = "group"
+    )
+    {
+        token visibility = "inherited"
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-1.099708120433672, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def "Left_Workcell_Fence_02" (
+            prepend apiSchemas = ["GeomModelAPI"]
+            displayName = "Workcell_Wall"
+            instanceable = false
+            kind = "component"
+            prepend payload = @../components/enclosure/Workcell_Wall.usd@
+        )
+        {
+            float3[] extentsHint = [(-1.8, -0.06, -3), (1.8, 0, 3), (-1.8, -0.06, -3), (1.8, 0, 3), (-1.8, -0.06, -3), (1.8, 0, 3), (-0.0025, -0.0565, 2.9975), (0.0025, -0.0035, 3.0025)]
+            token visibility = "inherited"
+            quatf xformOp:orient = (0.5, -0.5, 0.5, 0.5)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (-3.0878313088058573, 2.9999999999999987, 1.8243940568413937)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            over "Workcell_Wall"
+            {
+                over "tn__Part1_f5"
+                {
+                    over "Mesh"
+                    {
+                    }
+                }
+            }
+        }
+
+        def "Rear_Workcell_Fence_01" (
+            prepend apiSchemas = ["GeomModelAPI"]
+            displayName = "Workcell_Wall"
+            instanceable = false
+            kind = "component"
+            prepend payload = @../components/enclosure/Workcell_Wall.usd@
+        )
+        {
+            float3[] extentsHint = [(-1.8, -0.06, -3), (1.8, 0, 3), (-1.8, -0.06, -3), (1.8, 0, 3), (-1.8, -0.06, -3), (1.8, 0, 3), (-0.0025, -0.0565, 2.9975), (0.0025, -0.0035, 3.0025)]
+            token visibility = "inherited"
+            quatf xformOp:orient = (0.70710677, 0, 0.70710677, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (-5.232179633777997e-21, 5.9896974138199885, 1.8243940568414163)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            over "Workcell_Wall"
+            {
+                over "tn__Part1_f5"
+                {
+                    over "Mesh"
+                    {
+                    }
+                }
+            }
+        }
+
+        def "Rear_Workcell_Fence_02" (
+            prepend apiSchemas = ["GeomModelAPI"]
+            displayName = "Workcell_Wall"
+            instanceable = false
+            kind = "component"
+            prepend payload = @../components/enclosure/Workcell_Wall.usd@
+        )
+        {
+            float3[] extentsHint = [(-1.8, -0.06, -3), (1.8, 0, 3), (-1.8, -0.06, -3), (1.8, 0, 3), (-1.8, -0.06, -3), (1.8, 0, 3), (-0.0025, -0.0565, 2.9975), (0.0025, -0.0035, 3.0025)]
+            token visibility = "inherited"
+            quatf xformOp:orient = (0.70710677, 0, 0.70710677, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (6.041659789524499, 5.989697413820009, 1.824394056841416)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            over "Workcell_Wall"
+            {
+                over "tn__Part1_f5"
+                {
+                    over "Mesh"
+                    {
+                    }
+                }
+            }
+        }
+
+        def "Right_Workcell_Fence_02" (
+            prepend apiSchemas = ["GeomModelAPI"]
+            displayName = "Workcell_Wall"
+            instanceable = false
+            kind = "component"
+            prepend payload = @../components/enclosure/Workcell_Wall.usd@
+        )
+        {
+            float3[] extentsHint = [(-1.8, -0.06, -3), (1.8, 0, 3), (-1.8, -0.06, -3), (1.8, 0, 3), (-1.8, -0.06, -3), (1.8, 0, 3), (-0.0025, -0.0565, 2.9975), (0.0025, -0.0035, 3.0025)]
+            token visibility = "inherited"
+            quatf xformOp:orient = (0.5, -0.5, 0.5, 0.5)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (9.042965689929476, 3.0000000000000013, 1.824394056841392)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            over "Workcell_Wall"
+            {
+                over "tn__Part1_f5"
+                {
+                    over "Mesh"
+                    {
+                    }
+                }
+            }
+        }
+    }
+
+    def "EVBatteryPack" (
+        prepend apiSchemas = ["GeomModelAPI"]
+        kind = "component"
+        prepend payload = @../components/ev_battery_pack/EVBatteryPack.usd@
+    )
+    {
+        float3[] extentsHint = [(-0.041272, -0.052302, -0.046682), (0.053728, 0.042698, 0.030818), (-0.041272, -0.052302, -0.046682), (0.053728, 0.042698, 0.030818), (-0.041272, -0.052302, -0.046682), (0.053728, 0.042698, 0.030818), (0.0037, -0.0453, 0.0283), (0.0087, 0.0357, 0.0333)]
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (2.15, 3.0009789042912254, 1.126)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "RightBin" (
+        prepend apiSchemas = ["GeomModelAPI"]
+        displayName = "Bin"
+        kind = "component"
+        prepend payload = @../components/fixtures/bin/Bin.usd@
+    )
+    {
+        float3[] extentsHint = [(-0.292585, -0.192585, 0), (0.292606, 0.192585, 0.12), (-0.292585, -0.192585, 0), (0.292606, 0.192585, 0.12), (-0.292585, -0.192585, 0), (0.292606, 0.192585, 0.12), (-0.005, -0.215, 0.055), (0.005, 0.215, 0.065)]
+        quatf xformOp:orient = (0.70710677, 0, 0, 0.70710677)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (2.8, -1.5317190862161518, 0.9)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Bin"
+        {
+            over "tn__Part1_f5"
+            {
+                over "Mesh"
+                {
+                }
+            }
+        }
+    }
+
+    def "LeftBin" (
+        prepend apiSchemas = ["GeomModelAPI"]
+        displayName = "Bin"
+        kind = "component"
+        prepend payload = @../components/fixtures/bin/Bin.usd@
+    )
+    {
+        float3[] extentsHint = [(-0.292585, -0.192585, 0), (0.292606, 0.192585, 0.12), (-0.292585, -0.192585, 0), (0.292606, 0.192585, 0.12), (-0.292585, -0.192585, 0), (0.292606, 0.192585, 0.12), (-0.005, -0.215, 0.055), (0.005, 0.215, 0.065)]
+        quatf xformOp:orient = (0.70710677, 0, 0, 0.70710677)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (1.5, -1.5317190862161518, 0.9)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Bin"
+        {
+            over "tn__Part1_f5"
+            {
+                over "Mesh"
+                {
+                }
+            }
+        }
+    }
+
+    def "Table" (
+        prepend apiSchemas = ["GeomModelAPI"]
+        kind = "component"
+        prepend payload = @../components/fixtures/table/Table.usd@
+    )
+    {
+        float3[] extentsHint = [(-1.5, -0.5, 0), (1.5, 0.5, 0.9), (-1.5, -0.5, 0), (1.5, 0.5, 0.9), (-1.5, -0.5, 0), (1.5, 0.5, 0.9), (-0.005, -0.215, 0.055), (0.005, 0.215, 0.065)]
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (2.1462823576838383, -1.4932590263278998, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Table"
+        {
+            over "tn__Part1_f5"
+            {
+                over "Mesh"
+                {
+                }
+            }
+        }
+    }
+}
+
+over "Render"
+{
+    over "OmniverseKit"
+    {
+        over "HydraTextures"
+        {
+            over "omni_kit_widget_viewport_ViewportTexture_0"
+            {
+                token omni:rtx:ambientOcclusion:denoiserMode = "none"
+                token omni:rtx:background:source:texture:textureMode = "repeatMirrored"
+                token omni:rtx:background:source:type = "domeLight"
+                bool omni:rtx:debug:view:pixelDebug:enableFixedTextPos = 1
+                token omni:rtx:directLighting:sampledLighting:denoisingTechnique = "None"
+                bool omni:rtx:dlss:frameGeneration = 0
+                float3 omni:rtx:domeLight:rotationAxis = (0, 0, 1)
+                bool omni:rtx:indirectDiffuse:denoiser:enabled = 0
+                bool omni:rtx:material:db:syncLoads = 1
+                token omni:rtx:post:dlss:execMode = "performance"
+                bool omni:rtx:post:registeredCompositing:invertColorCorrection = 1
+                bool omni:rtx:post:registeredCompositing:invertToneMap = 1
+                bool omni:rtx:pt:adaptiveSampling:filterError = 0
+                uint omni:rtx:pt:adaptiveSampling:fixedSppIterations = 2
+                uint omni:rtx:pt:maxSamplesPerLaunch = 2073600
+                uint omni:rtx:pt:mgpu:maxPixelsPerRegionExponent = 12
+                bool omni:rtx:reflections:denoiser:enabled = 0
+                token omni:rtx:rendermode = "RealTimePathTracing"
+                color3f omni:rtx:rt:ambientLight:color = (0.1, 0.1, 0.1)
+                bool omni:rtx:rt:demoire = 0
+                bool omni:rtx:rt:ecoMode:enabled
+                bool omni:rtx:rt:lightcache:spatialCache:dontResolveConflicts = 1
+                int omni:rtx:rt:sss:samples = 1
+                uint omni:rtx:rtpt:maxVolumeBounces = 15
+                float omni:rtx:rtpt:modulatingRoughnessThreshold = 0.08
+                bool omni:rtx:scene:hydra:materialSyncLoads = 1
+                bool omni:rtx:scene:hydra:mdlMaterialWarmup = 1
+            }
+        }
+    }
+}
+
+over "OmniverseKit_Persp"
+{
+    float exposure:fStop = 5
+    float exposure:responsivity = 1.1026709
+    float exposure:time = 0.02
+}
+

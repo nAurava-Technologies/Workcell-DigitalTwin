@@ -1,0 +1,31 @@
+#usda 1.0
+(
+    defaultPrim = "World"
+    endTimeCode = 1000000
+    metersPerUnit = 1
+    startTimeCode = 0
+    timeCodesPerSecond = 60
+    upAxis = "Z"
+)
+
+def Xform "World"
+{
+    def PhysicsScene "PhysicsScene" (
+        prepend apiSchemas = ["NewtonSceneAPI", "PhysxSceneAPI"]
+    )
+    {
+    }
+
+    def "GroundPlane" (
+        prepend apiSchemas = ["GeomModelAPI"]
+        kind = "component"
+        prepend payload = @../components/fixtures/ground_plane/GroundPlane.usd@
+    )
+    {
+        float3[] extentsHint = [(-25, -25, 0), (25, 25, 0), (-25, -25, 0), (25, 25, 0), (-25, -25, 0), (25, 25, 0), (-25, -25, 0), (25, 25, 0)]
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+}
