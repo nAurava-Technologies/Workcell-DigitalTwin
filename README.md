@@ -77,7 +77,7 @@ To convert raw CAD models into simulation-ready assets (e.g. the Table), we foll
 ## How to Run
 
 1.  Open **NVIDIA Omniverse (USD Composer / Create)** or **Isaac Sim**.
-2.  Open the assembly stage [workcell_digitaltwin.usd](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/workcell_digitaltwin.usd).
+2.  Open the assembly stage [`workcell_digitaltwin.usd`](./workcell_digitaltwin.usd).
 3.  In **Isaac Sim** Click **Play** to start the simulation and observe the rigid body dynamics and joint behaviors.
 
 

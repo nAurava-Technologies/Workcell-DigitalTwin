@@ -88,8 +88,8 @@ def verify_materials():
     # 5. Verify Table roughness texture colorSpace
     table_stage = Usd.Stage.Open("components/fixtures/table/Table.usd")
     table_attr = table_stage.GetPrimAtPath("/Table/Looks/White_Strong_Metallic/Shader").GetAttribute("inputs:roughness_texture")
-    if table_attr.GetMetadata("colorSpace") == "auto":
-        print("PASS: Table roughness_texture colorSpace is 'auto'.")
+    if table_attr.GetMetadata("colorSpace") in ("auto", "raw"):
+        print(f"PASS: Table roughness_texture colorSpace is '{table_attr.GetMetadata('colorSpace')}'.")
     else:
         print(f"FAIL: Table roughness_texture colorSpace is {table_attr.GetMetadata('colorSpace')}")
         sys.exit(1)

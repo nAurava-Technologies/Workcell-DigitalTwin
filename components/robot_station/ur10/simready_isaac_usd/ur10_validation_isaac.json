@@ -1,5 +1,5 @@
 {
-    "D:\\NVidia\\Omniverse\\Projects\\Factory\\Inspection-Workcell\\ur10\\simready_isaac_usd\\ur10.usda": {
+    "components/robot_station/ur10/simready_isaac_usd/ur10.usda": {
         "features_summary": {
             "FET001_BASE_NEUTRAL": {
                 "dependencies": "[]",

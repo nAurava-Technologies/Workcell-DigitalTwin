@@ -29,7 +29,8 @@ if sys.platform == "win32":
         pass
 
 # Setup default foundation root path
-DEFAULT_FOUNDATION_ROOT = Path(r"D:\NVidia\Omniverse\Projects\SimReady\simready-foundation")
+_DEFAULT_SIMREADY_DIR = Path(__file__).resolve().parents[5] / "SimReady" / "simready-foundation"
+DEFAULT_FOUNDATION_ROOT = Path(os.environ.get("SIMREADY_FOUNDATION_ROOT", str(_DEFAULT_SIMREADY_DIR)))
 
 FEATURE_NAMES = {
     "FET000_CORE": "Core Naming, Layout & Portability",

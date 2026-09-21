@@ -188,7 +188,7 @@ sequenceDiagram
 To validate any asset in the repository against its target SimReady profile, execute the SimReady Foundation validator using the project's dedicated Python virtual environment:
 
 ```powershell
-& "D:\NVidia\Omniverse\Projects\SimReady\simready-foundation\.venv\Scripts\python.exe" `
+& "..\..\SimReady\simready-foundation\.venv\Scripts\python.exe" `
   "docs/simready/gemini_skills/simready-cad-pipeline/scripts/audit_asset.py" `
   --asset "components/conveyor/conveyor.usd" `
   --profile "Prop-Robotics-Neutral"

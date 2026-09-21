@@ -93,7 +93,7 @@ workcell_digitaltwin.usd [metersPerUnit=1.0, upAxis=Z]
 ## 5. Detailed Component Audit Reports
 
 ### 5.1 Storage Bins (Bin.usd)
-* **File Path:** [`components\fixtures\bin\Bin.usd`](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/components/fixtures/bin/Bin.usd)
+* **File Path:** [`components/fixtures/bin/Bin.usd`](../../components/fixtures/bin/Bin.usd)
 * **Target Profile:** `Prop-Robotics-Neutral` (v`1.0.0`)
 * **Default Prim:** `/Bin` | **Length Scale:** `1.0m` | **Up-Axis:** `Z`
 * **Simulation Entities:** `1 Rigid Bodies`, `1 Colliders`, `2 Bound Materials`
@@ -108,7 +108,7 @@ workcell_digitaltwin.usd [metersPerUnit=1.0, upAxis=Z]
 | `FET006_BASE_MDL` | MDL Shaders & Textures | 🟢 **PASS** | All requirements satisfied. |
 
 ### 5.2 Inspection Table (Table.usd)
-* **File Path:** [`components\fixtures\table\Table.usd`](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/components/fixtures/table/Table.usd)
+* **File Path:** [`components/fixtures/table/Table.usd`](../../components/fixtures/table/Table.usd)
 * **Target Profile:** `Prop-Robotics-Neutral` (v`1.0.0`)
 * **Default Prim:** `/Table` | **Length Scale:** `1.0m` | **Up-Axis:** `Z`
 * **Simulation Entities:** `1 Rigid Bodies`, `1 Colliders`, `3 Bound Materials`
@@ -123,7 +123,7 @@ workcell_digitaltwin.usd [metersPerUnit=1.0, upAxis=Z]
 | `FET006_BASE_MDL` | MDL Shaders & Textures | 🟢 **PASS** | All requirements satisfied. |
 
 ### 5.3 Robot Pedestal Base (Robot_Base.usd)
-* **File Path:** [`components\robot_station\robot_base\Robot_Base.usd`](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/components/robot_station/robot_base/Robot_Base.usd)
+* **File Path:** [`components/robot_station/robot_base/Robot_Base.usd`](../../components/robot_station/robot_base/Robot_Base.usd)
 * **Target Profile:** `Prop-Robotics-Neutral` (v`1.0.0`)
 * **Default Prim:** `/Robot_Base` | **Length Scale:** `1.0m` | **Up-Axis:** `Z`
 * **Simulation Entities:** `1 Rigid Bodies`, `1 Colliders`, `3 Bound Materials`
@@ -138,7 +138,7 @@ workcell_digitaltwin.usd [metersPerUnit=1.0, upAxis=Z]
 | `FET006_BASE_MDL` | MDL Shaders & Textures | 🟢 **PASS** | All requirements satisfied. |
 
 ### 5.4 Safety Enclosure Fences (Workcell_Wall.usd)
-* **File Path:** [`components\enclosure\Workcell_Wall.usd`](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/components/enclosure/Workcell_Wall.usd)
+* **File Path:** [`components/enclosure/Workcell_Wall.usd`](../../components/enclosure/Workcell_Wall.usd)
 * **Target Profile:** `Prop-Robotics-Neutral` (v`1.0.0`)
 * **Default Prim:** `/Workcell_Wall` | **Length Scale:** `1.0m` | **Up-Axis:** `Z`
 * **Simulation Entities:** `1 Rigid Bodies`, `1 Colliders`, `2 Bound Materials`
@@ -153,7 +153,7 @@ workcell_digitaltwin.usd [metersPerUnit=1.0, upAxis=Z]
 | `FET006_BASE_MDL` | MDL Shaders & Textures | 🟢 **PASS** | All requirements satisfied. |
 
 ### 5.5 X-Ray Inspection Scanner (xray_scanner.usd)
-* **File Path:** [`components\xray_scanner\xray_scanner.usd`](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/components/xray_scanner/xray_scanner.usd)
+* **File Path:** [`components/xray_scanner/xray_scanner.usd`](../../components/xray_scanner/xray_scanner.usd)
 * **Target Profile:** `Prop-Robotics-Neutral` (v`1.0.0`)
 * **Default Prim:** `/xray_scanner` | **Length Scale:** `1.0m` | **Up-Axis:** `Z`
 * **Simulation Entities:** `1 Rigid Bodies`, `1 Colliders`, `2 Bound Materials`
@@ -168,7 +168,7 @@ workcell_digitaltwin.usd [metersPerUnit=1.0, upAxis=Z]
 | `FET006_BASE_MDL` | MDL Shaders & Textures | 🟢 **PASS** | All requirements satisfied. |
 
 ### 5.6 EV Battery Pack (EVBatteryPack.usd)
-* **File Path:** [`components\ev_battery_pack\EVBatteryPack.usd`](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/components/ev_battery_pack/EVBatteryPack.usd)
+* **File Path:** [`components/ev_battery_pack/EVBatteryPack.usd`](../../components/ev_battery_pack/EVBatteryPack.usd)
 * **Target Profile:** `Prop-Robotics-Neutral` (v`1.0.0`)
 * **Default Prim:** `/EVBatteryPack` | **Length Scale:** `1.0m` | **Up-Axis:** `Z`
 * **Simulation Entities:** `1 Rigid Bodies`, `1 Colliders`, `7 Bound Materials`
@@ -183,7 +183,7 @@ workcell_digitaltwin.usd [metersPerUnit=1.0, upAxis=Z]
 | `FET006_BASE_MDL` | MDL Shaders & Textures | 🟢 **PASS** | All requirements satisfied. |
 
 ### 5.7 Belt Conveyor (conveyor.usd)
-* **File Path:** [`components\conveyor\conveyor.usd`](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/components/conveyor/conveyor.usd)
+* **File Path:** [`components/conveyor/conveyor.usd`](../../components/conveyor/conveyor.usd)
 * **Target Profile:** `Prop-Robotics-Neutral` (v`1.0.0`)
 * **Default Prim:** `/World` | **Length Scale:** `1.0m` | **Up-Axis:** `Z`
 * **Simulation Entities:** `1 Rigid Bodies`, `2 Colliders`, `8 Bound Materials`
@@ -199,7 +199,7 @@ workcell_digitaltwin.usd [metersPerUnit=1.0, upAxis=Z]
 | `FET006_BASE_MDL` | MDL Shaders & Textures | 🟢 **PASS** | All requirements satisfied. |
 
 ### 5.8 Universal Robots UR10 Manipulator (ur10.usda)
-* **File Path:** [`components\robot_station\ur10\simready_usd\ur10.usda`](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/components/robot_station/ur10/simready_usd/ur10.usda)
+* **File Path:** [`components/robot_station/ur10/simready_usd/ur10.usda`](../../components/robot_station/ur10/simready_usd/ur10.usda)
 * **Target Profile:** `Robot-Body-Neutral` (v`1.0.0`)
 * **Default Prim:** `/ur10` | **Length Scale:** `1.0m` | **Up-Axis:** `Z`
 * **Simulation Entities:** `7 Rigid Bodies`, `0 Colliders`, `0 Bound Materials`
@@ -218,10 +218,10 @@ workcell_digitaltwin.usd [metersPerUnit=1.0, upAxis=Z]
 
 All audits, remediations, and reporting workflows have been automated through durable Python utilities and AI agent skills:
 
-1. **CLI Audit Runner:** [`docs/simready/gemini_skills/simready-cad-pipeline/scripts/audit_asset.py`](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/docs/simready/gemini_skills/simready-cad-pipeline/scripts/audit_asset.py)
+1. **CLI Audit Runner:** [`docs/simready/gemini_skills/simready-cad-pipeline/scripts/audit_asset.py`](./gemini_skills/simready-cad-pipeline/scripts/audit_asset.py)
    * Validates any asset against `Prop-Robotics-Neutral` or `Robot-Body-Neutral` with exit codes.
-2. **CAD Remediation Pipeline:** [`docs/simready/gemini_skills/simready-cad-pipeline/scripts/remediate_cad_asset.py`](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/docs/simready/gemini_skills/simready-cad-pipeline/scripts/remediate_cad_asset.py)
+2. **CAD Remediation Pipeline:** [`docs/simready/gemini_skills/simready-cad-pipeline/scripts/remediate_cad_asset.py`](./gemini_skills/simready-cad-pipeline/scripts/remediate_cad_asset.py)
    * Executes the 8-step CAD conditioning pipeline (units, hierarchy, metadata, ghost URL purging, colorspaces, colliders, physics materials, grasp curves).
-3. **Antigravity AI Agent Skill:** [`docs/simready/gemini_skills/simready-cad-pipeline/SKILL.md`](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/docs/simready/gemini_skills/simready-cad-pipeline/SKILL.md)
+3. **Antigravity AI Agent Skill:** [`docs/simready/gemini_skills/simready-cad-pipeline/SKILL.md`](./gemini_skills/simready-cad-pipeline/SKILL.md)
    * Mirrored to `.agents/skills/simready-cad-pipeline/` for automatic discovery by future AI coding assistants.
-4. **Engineering Manual & Cheatsheet:** [`docs/simready/standalone/README.md`](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/docs/simready/standalone/README.md) and [`docs/simready/standalone/cad_remediation_cheatsheet.md`](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/docs/simready/standalone/cad_remediation_cheatsheet.md)
+4. **Engineering Manual & Cheatsheet:** [`docs/simready/standalone/README.md`](./standalone/README.md) and [`docs/simready/standalone/cad_remediation_cheatsheet.md`](./standalone/cad_remediation_cheatsheet.md)

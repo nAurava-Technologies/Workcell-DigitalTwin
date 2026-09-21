@@ -3,7 +3,7 @@
 | Metadata | Value |
 | :--- | :--- |
 | **Date/Time of Run** | 2026-09-07 20:45:28 |
-| **Asset Path** | `D:\NVidia\Omniverse\Projects\Factory\Workcell-DigitalTwin\ur10\simready_usd\ur10.usda` |
+| **Asset Path** | `components/robot_station/ur10/simready_usd/ur10.usda` |
 | **Profile Target** | `Robot-Body-Neutral` v`1.0.0` |
 
 ## Feature Summary Table

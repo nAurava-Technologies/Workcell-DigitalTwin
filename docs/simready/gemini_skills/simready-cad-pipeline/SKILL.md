@@ -30,8 +30,10 @@ This skill provides an autonomous, reproducible workflow to inspect OpenUSD stag
 All SimReady commands must be executed using the SimReady Foundation Python environment:
 
 ```powershell
-# Python Interpreter:
-& "D:\NVidia\Omniverse\Projects\SimReady\simready-foundation\.venv\Scripts\python.exe" <script.py>
+# Python Interpreter (relative path from repository root):
+& "..\..\SimReady\simready-foundation\.venv\Scripts\python.exe" <script.py>
+# Or via activated environment / system Python:
+python <script.py>
 ```
 
 ### Key Paths in this Repository
@@ -63,7 +65,7 @@ flowchart TD
 Run the CLI audit tool against the target USD asset:
 
 ```powershell
-& "D:\NVidia\Omniverse\Projects\SimReady\simready-foundation\.venv\Scripts\python.exe" `
+& "..\..\SimReady\simready-foundation\.venv\Scripts\python.exe" `
   "docs/simready/gemini_skills/simready-cad-pipeline/scripts/audit_asset.py" `
   "path/to/asset.usd" `
   --profile "Prop-Robotics-Neutral" `
@@ -90,12 +92,12 @@ For unconditioned CAD assets or props requiring standard conditioning, execute t
 
 ```powershell
 # For assets already in meters:
-& "D:\NVidia\Omniverse\Projects\SimReady\simready-foundation\.venv\Scripts\python.exe" `
+& "..\..\SimReady\simready-foundation\.venv\Scripts\python.exe" `
   "docs/simready/gemini_skills/simready-cad-pipeline/scripts/remediate_cad_asset.py" `
   "path/to/raw_asset.usd"
 
 # For raw CAD assets exported in millimeters:
-& "D:\NVidia\Omniverse\Projects\SimReady\simready-foundation\.venv\Scripts\python.exe" `
+& "..\..\SimReady\simready-foundation\.venv\Scripts\python.exe" `
   "docs/simready/gemini_skills/simready-cad-pipeline/scripts/remediate_cad_asset.py" `
   "path/to/raw_asset.usd" `
   --scale-points `
@@ -116,6 +118,6 @@ The script automatically executes:
 1. Re-run `audit_asset.py` on the modified asset to verify `100% SIMREADY COMPLIANT`.
 2. If the asset is integrated into `workcell_digitaltwin.usd`, run the full stage composition check:
    ```powershell
-   & "D:\NVidia\Omniverse\Projects\SimReady\simready-foundation\.venv\Scripts\python.exe" `
-     "scratch/full_system_verification.py"
+   & "..\..\SimReady\simready-foundation\.venv\Scripts\python.exe" `
+     "docs/workcell-digitaltwin/helper_scripts/full_system_verification.py"
    ```

@@ -24,8 +24,8 @@ if sys.platform == "win32":
     except AttributeError:
         pass
 
-SR_ROOT = Path(r"D:\NVidia\Omniverse\Projects\SimReady\simready-foundation")
-PROJECT_ROOT = Path(r"D:\NVidia\Omniverse\Projects\Factory\Workcell-DigitalTwin")
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
+SR_ROOT = Path(os.environ.get("SIMREADY_FOUNDATION_ROOT", str(PROJECT_ROOT.parent.parent / "SimReady" / "simready-foundation")))
 
 if str(SR_ROOT) not in sys.path:
     sys.path.insert(0, str(SR_ROOT))
@@ -385,9 +385,9 @@ def generate_markdown_report(asset_results: list, system_result: dict, output_fi
     for res in asset_results:
         info = res["info"]
         st = res["stage_info"]
-        file_url = str(info["path"]).replace("\\", "/")
+        rel_file = info["path"].relative_to(PROJECT_ROOT).as_posix()
         md.append(f"### 5.{asset_results.index(res) + 1} {info['name']}")
-        md.append(f"* **File Path:** [`{info['path'].relative_to(PROJECT_ROOT)}`](file:///{file_url})")
+        md.append(f"* **File Path:** [`{rel_file}`](../../{rel_file})")
         md.append(f"* **Target Profile:** `{info['profile']}` (v`{info['version']}`)")
         md.append(f"* **Default Prim:** `{st['default_prim']}` | **Length Scale:** `{st['meters_per_unit']}m` | **Up-Axis:** `{st['up_axis']}`")
         md.append(f"* **Simulation Entities:** `{st['rigid_bodies']} Rigid Bodies`, `{st['colliders']} Colliders`, `{st['materials']} Bound Materials`")
@@ -413,13 +413,13 @@ def generate_markdown_report(asset_results: list, system_result: dict, output_fi
     md.append("")
     md.append("All audits, remediations, and reporting workflows have been automated through durable Python utilities and AI agent skills:")
     md.append("")
-    md.append("1. **CLI Audit Runner:** [`docs/simready/gemini_skills/simready-cad-pipeline/scripts/audit_asset.py`](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/docs/simready/gemini_skills/simready-cad-pipeline/scripts/audit_asset.py)")
+    md.append("1. **CLI Audit Runner:** [`docs/simready/gemini_skills/simready-cad-pipeline/scripts/audit_asset.py`](./gemini_skills/simready-cad-pipeline/scripts/audit_asset.py)")
     md.append("   * Validates any asset against `Prop-Robotics-Neutral` or `Robot-Body-Neutral` with exit codes.")
-    md.append("2. **CAD Remediation Pipeline:** [`docs/simready/gemini_skills/simready-cad-pipeline/scripts/remediate_cad_asset.py`](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/docs/simready/gemini_skills/simready-cad-pipeline/scripts/remediate_cad_asset.py)")
+    md.append("2. **CAD Remediation Pipeline:** [`docs/simready/gemini_skills/simready-cad-pipeline/scripts/remediate_cad_asset.py`](./gemini_skills/simready-cad-pipeline/scripts/remediate_cad_asset.py)")
     md.append("   * Executes the 8-step CAD conditioning pipeline (units, hierarchy, metadata, ghost URL purging, colorspaces, colliders, physics materials, grasp curves).")
-    md.append("3. **Antigravity AI Agent Skill:** [`docs/simready/gemini_skills/simready-cad-pipeline/SKILL.md`](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/docs/simready/gemini_skills/simready-cad-pipeline/SKILL.md)")
-    md.append("   * Mirrored to `.agents/skills/simready-cad-pipeline/` for automatic discovery by future AI coding assistants.")
-    md.append("4. **Engineering Manual & Cheatsheet:** [`docs/simready/standalone/README.md`](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/docs/simready/standalone/README.md) and [`docs/simready/standalone/cad_remediation_cheatsheet.md`](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/docs/simready/standalone/cad_remediation_cheatsheet.md)")
+    md.append("3. **Antigravity AI Agent Skill:** [`docs/simready/gemini_skills/simready-cad-pipeline/SKILL.md`](./gemini_skills/simready-cad-pipeline/SKILL.md)")
+    md.append("   * AI agent skill for automated CAD validation and conditioning.")
+    md.append("4. **Engineering Manual & Cheatsheet:** [`docs/simready/standalone/README.md`](./standalone/README.md) and [`docs/simready/standalone/cad_remediation_cheatsheet.md`](./standalone/cad_remediation_cheatsheet.md)")
     md.append("")
 
     output_file.parent.mkdir(parents=True, exist_ok=True)
