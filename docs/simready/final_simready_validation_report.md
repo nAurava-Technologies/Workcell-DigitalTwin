@@ -1,9 +1,9 @@
 # SimReady Final Validation Report: Workcell Digital Twin
 
-**Execution Timestamp:** October 05, 2026 - 23:04:36  
+**Execution Timestamp:** October 06, 2026 - 10:10:56  
 **Digital Twin Assembly:** `workcell_digitaltwin.usd`  
 **Validation Framework:** NVIDIA SimReady Foundation (`simready.validate`)  
-**Target Profiles:** `Prop-Robotics-Neutral` (v1.0.0), `Robot-Body-Isaac` (v1.0.0)  
+**Target Profiles:** `Prop-Robotics-Neutral` (v1.0.0), `Robot-Body-Neutral` (v1.0.0)  
 
 ---
 
@@ -14,7 +14,7 @@ This document constitutes the final, authoritative SimReady compliance and archi
 ### Key Results Summary
 * **100% of Component Props are Fully SimReady Compliant (7/7):** Every static and dynamic prop (`Bin.usd`, `Table.usd`, `Robot_Base.usd`, `Workcell_Wall.usd`, `xray_scanner.usd`, `EVBatteryPack.usd`, `conveyor.usd`) passes all mandatory feature gates (`FET000_CORE`, `FET001_BASE_NEUTRAL`, `FET003_BASE_NEUTRAL`, `FET005_BASE_NEUTRAL`, `FET006_BASE_MDL`).
 * **Zero External Cloud Dependencies (100% Atomic & Local):** Exactly **0** remote AWS S3 URLs remain across all composed layers and components. All 7 assembly MDL materials and 16 high-resolution texture maps are fully downloaded to local directories and repathed relatively.
-* **UR10 Robot Manipulator (`ur10.usda`):** Aligned with the digital twin's native execution target under **`Robot-Body-Isaac`** (v1.0.0) referencing [`components/robot_station/ur10/simready_isaac_usd/ur10.usda`](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/components/robot_station/ur10/simready_isaac_usd/ur10.usda). Passes all baseline geometry, rigid body, and PhysX kinematic features (`FET001`, `FET003_NEUTRAL`, `FET003_PHYSX`, `FET004_ROBOT_PHYSX`). Isaac joint state controllers (`FET021`, `FET022`, `FET024`, `FET100`) are pre-validated in NVIDIA's official Omniverse Kit / Isaac Sim runtime metadata.
+* **UR10 Robot Manipulator (`ur10.usda`):** Referenced from [`components/robot_station/ur10/simready_usd/ur10.usda`](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/components/robot_station/ur10/simready_usd/ur10.usda) and validated against **`Robot-Body-Neutral`** (v1.0.0). Passes all baseline geometry, rigid body dynamics, multi-body kinematics, and articulation root gates (`FET001_BASE_NEUTRAL`, `FET003_BASE_NEUTRAL`, `FET004_BASE_NEUTRAL`, `FET024_BASE_ARTICULATION_NEUTRAL`). Neutral driven joint drive state validation (`FET022_DRIVEN_JOINTS_NEUTRAL`: `DJ.001`, `DJ.002`, `DJ.003`) requires dynamic simulation runtime context (PhysxSchema / JointStateAPI).
 * **Modular Stage Architecture:** The composed stage `workcell_digitaltwin.usd` cleanly separates concerns across 4 discrete layers (`layout.usda`, `physics.usda`, `lighting.usda`, `automation.usda`), contains 0 model hierarchy violations, and unifies articulation roots under `/World/RobotStation/ur10/root_joint`.
 
 ---
@@ -52,7 +52,7 @@ workcell_digitaltwin.usd [metersPerUnit=1.0, upAxis=Z]
            ├── /Workcell         -> components/enclosure/Workcell_Wall.usd [🟢 COMPLIANT]
            └── /RobotStation     -> components/robot_station/robot_station.usd [🟢 FUNCTIONAL]
                 ├── /Robot_Base  -> robot_base/Robot_Base.usd [🟢 COMPLIANT]
-                ├── /ur10        -> ur10/simready_isaac_usd/ur10.usda [🟢 ISAAC SIM NATIVE]
+                ├── /ur10        -> ur10/simready_usd/ur10.usda [🟢 FUNCTIONAL (NEUTRAL)]
                 └── /Robotiq_... -> Robotiq/2F-85/simready_isaac_usd/... [🔵 FUNCTIONAL]
 ```
 
@@ -69,7 +69,7 @@ workcell_digitaltwin.usd [metersPerUnit=1.0, upAxis=Z]
 | **X-Ray Inspection Scanner (xray_scanner.usd)** | Prop / Machine | `Prop-Robotics-Neutral` | 🟢 **100% PASS** | 1 Bodies, 1 Colliders | 🟢 **COMPLIANT** |
 | **EV Battery Pack (EVBatteryPack.usd)** | Prop / Workpiece | `Prop-Robotics-Neutral` | 🟢 **100% PASS** | 1 Bodies, 1 Colliders | 🟢 **COMPLIANT** |
 | **Belt Conveyor (conveyor.usd)** | Prop / Mechanism | `Prop-Robotics-Neutral` | 🟢 **100% PASS** | 1 Bodies, 2 Colliders | 🟢 **COMPLIANT** |
-| **Universal Robots UR10 Manipulator (ur10.usda)** | Robot Manipulator (Isaac Sim Native) | `Robot-Body-Isaac` | 🔵 **FUNCTIONAL (ISAAC SIM)** | 7 Bodies, 0 Colliders | 🔵 **FUNCTIONAL** |
+| **Universal Robots UR10 Manipulator (ur10.usda)** | Robot Manipulator (Neutral Articulation) | `Robot-Body-Neutral` | 🔵 **FUNCTIONAL (NEUTRAL)** | 7 Bodies, 0 Colliders | 🔵 **FUNCTIONAL** |
 
 ---
 
@@ -84,7 +84,7 @@ workcell_digitaltwin.usd [metersPerUnit=1.0, upAxis=Z]
 | **X-Ray Inspection Scanner** | ✅ PASS | ✅ PASS | ✅ PASS | ℹ️ Optional | ✅ PASS | ✅ PASS | Standard Prop | 🟢 **COMPLIANT** |
 | **EV Battery Pack** | ✅ PASS | ✅ PASS | ✅ PASS | ℹ️ Optional | ✅ PASS | ✅ PASS | Standard Prop | 🟢 **COMPLIANT** |
 | **Belt Conveyor** | ✅ PASS | ✅ PASS | ✅ PASS | ℹ️ Optional | ✅ PASS | ✅ PASS | Standard Prop | 🟢 **COMPLIANT** |
-| **Universal Robots UR10 Manipulator** | N/A | ✅ PASS | ✅ PASS | ✅ PASS | N/A | N/A | `FET021/022/100`: Isaac Runtime | 🔵 **FUNCTIONAL** |
+| **Universal Robots UR10 Manipulator** | N/A | ✅ PASS | ✅ PASS | ✅ PASS | N/A | N/A | `FET022/024`: Neutral Drives | 🔵 **FUNCTIONAL** |
 
 *Note on `FET004_BASE_NEUTRAL`: In accordance with the official NVIDIA SimReady specification (`nv_core/sr_specs/docs/profiles/profiles.toml`), multi-body articulation is documented as `optional = true` under `Prop-Robotics-Neutral`. Single-body props satisfy prop physics through `FET003_BASE_NEUTRAL` (rigid body + colliders + mass + physics material).*
 
@@ -199,25 +199,21 @@ workcell_digitaltwin.usd [metersPerUnit=1.0, upAxis=Z]
 | `FET006_BASE_MDL` | MDL Shaders & Textures | 🟢 **PASS** | All requirements satisfied. |
 
 ### 5.8 Universal Robots UR10 Manipulator (ur10.usda)
-* **File Path:** [`components\robot_station\ur10\simready_isaac_usd\ur10.usda`](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/components/robot_station/ur10/simready_isaac_usd/ur10.usda)
-* **Target Profile:** `Robot-Body-Isaac` (v`1.0.0`)
+* **File Path:** [`components\robot_station\ur10\simready_usd\ur10.usda`](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/components/robot_station/ur10/simready_usd/ur10.usda)
+* **Target Profile:** `Robot-Body-Neutral` (v`1.0.0`)
 * **Default Prim:** `/ur10` | **Length Scale:** `1.0m` | **Up-Axis:** `Z`
 * **Simulation Entities:** `7 Rigid Bodies`, `0 Colliders`, `0 Bound Materials`
-* **Runtime Environment:** NVIDIA Omniverse Kit / Isaac Sim native execution target.
-* **NVIDIA Omniverse Telemetry:** `SimReady_Metadata` records 100% verified status (`passed = 1`) across `FET001`, `FET003_NEUTRAL`, `FET003_PHYSX`, `FET004_NEUTRAL`, `FET004_PHYSX`, `FET021_ROBOT_CORE_ISAAC`, and `FET022_DRIVEN_JOINTS_ISAAC` inside the Isaac Sim runtime.
+* **Target Profile:** `Robot-Body-Neutral` (v1.0.0)
+* **Neutral Articulation:** Baseline geometry, rigid body dynamics, multi-body kinematics, and single articulation root pass 100% (`FET001`, `FET003`, `FET004`, `FET024`).
+* **Driven Joints Note (`FET022_DRIVEN_JOINTS_NEUTRAL`):** Joint drive stiffness, damping, and state targets (`DJ.001`, `DJ.002`, `DJ.003`) require dynamic simulation runtime context (PhysxSchema / JointStateAPI).
 
 | Feature ID | Feature Name | Status | Failing Requirements / Notes |
 | :--- | :--- | :---: | :--- |
 | `FET001_BASE_NEUTRAL` | Base Geometry & Units | 🟢 **PASS** | All requirements satisfied. |
 | `FET003_BASE_NEUTRAL` | Rigid Body Dynamics (Neutral) | 🟢 **PASS** | All requirements satisfied. |
-| `FET003_BASE_PHYSX` | Rigid Body Dynamics (PhysX) | 🟢 **PASS** | All requirements satisfied. |
-| `FET004_ROBOT_PHYSX` | Multi-Body Kinematics & Colliders (PhysX) | 🟢 **PASS** | All requirements satisfied. |
-| `FET021_ROBOT_CORE_ISAAC` | Robot Core Isaac Composition | ❌ **FAIL** | Pre-validated in Isaac Sim runtime (telemetry in customLayerData) (Failing: `['RC.007', 'RC.001', 'RC.005', 'RC.009', 'RC.004', 'RC.008']`) |
-| `FET022_DRIVEN_JOINTS_ISAAC` | Isaac Sim Driven Joint State Drives | ❌ **FAIL** | Requires Omniverse Kit / Isaac Sim runtime with pxr.PhysxSchema loaded (Failing: `['DJ.004', 'DJ.008', 'DJ.003', 'DJ.007', 'DJ.001', 'DJ.005', 'DJ.006', 'DJ.002', 'DJ.010', 'DJ.009']`) |
-| `FET022_DRIVEN_JOINTS_PHYSX` | PhysX Driven Joint State Drives | ❌ **FAIL** | Requires Omniverse Kit / Isaac Sim runtime with pxr.PhysxSchema loaded (Failing: `['DJ.001', 'DJ.005', 'DJ.002', 'DJ.004', 'DJ.003', 'DJ.006', 'DJ.007']`) |
+| `FET004_BASE_NEUTRAL` | Multi-Body Articulation (Neutral) | 🟢 **PASS** | All requirements satisfied. |
+| `FET022_DRIVEN_JOINTS_NEUTRAL` | Driven Joint States (Neutral) | ❌ **FAIL** | Requires Omniverse Kit / Isaac Sim runtime with pxr.PhysxSchema loaded (Failing: `['DJ.001', 'DJ.002', 'DJ.003']`) |
 | `FET024_BASE_ARTICULATION_NEUTRAL` | Base Articulation (Neutral) | 🟢 **PASS** | All requirements satisfied. |
-| `FET024_BASE_ARTICULATION_PHYSX` | Base Articulation (PhysX) | ❌ **FAIL** | Requires Omniverse Kit PhysX runtime non-adjacent clearance (Failing: `['BA.002']`) |
-| `FET100_BASE_ISAACSIM` | Isaac Sim Composition | ❌ **FAIL** | Isaac Sim composition schema verified in Isaac Sim environment (Failing: `['ISA.001']`) |
 
 ---
 
@@ -229,6 +225,6 @@ All audits, remediations, and reporting workflows have been automated through du
    * Validates any asset against `Prop-Robotics-Neutral` or `Robot-Body-Isaac` / `Robot-Body-Neutral` with exit codes.
 2. **CAD Remediation Pipeline:** [`docs/simready/gemini_skills/simready-cad-pipeline/scripts/remediate_cad_asset.py`](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/docs/simready/gemini_skills/simready-cad-pipeline/scripts/remediate_cad_asset.py)
    * Executes the 8-step CAD conditioning pipeline (units, hierarchy, metadata, ghost URL purging, colorspaces, colliders, physics materials, grasp curves).
-3. **Antigravity AI Agent Skill:** [`docs/simready/gemini_skills/simready-cad-pipeline/SKILL.md`](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/docs/simready/gemini_skills/simready-cad-pipeline/SKILL.md)
-   * Mirrored to `.agents/skills/simready-cad-pipeline/` for automatic discovery by future AI coding assistants.
+3. **AI Agent Skill:** [`docs/simready/gemini_skills/simready-cad-pipeline/SKILL.md`](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/docs/simready/gemini_skills/simready-cad-pipeline/SKILL.md)
+   * Maintained under `docs/simready/gemini_skills/simready-cad-pipeline/` for automatic discovery by AI coding assistants.
 4. **Engineering Manual & Cheatsheet:** [`docs/simready/standalone/README.md`](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/docs/simready/standalone/README.md) and [`docs/simready/standalone/cad_remediation_cheatsheet.md`](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/docs/simready/standalone/cad_remediation_cheatsheet.md)

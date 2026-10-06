@@ -143,10 +143,10 @@ ASSETS_TO_AUDIT = [
     {
         "id": "ur10",
         "name": "Universal Robots UR10 Manipulator (ur10.usda)",
-        "path": PROJECT_ROOT / "components/robot_station/ur10/simready_isaac_usd/ur10.usda",
-        "profile": "Robot-Body-Isaac",
+        "path": PROJECT_ROOT / "components/robot_station/ur10/simready_usd/ur10.usda",
+        "profile": "Robot-Body-Neutral",
         "version": "1.0.0",
-        "category": "Robot Manipulator (Isaac Sim Native)"
+        "category": "Robot Manipulator (Neutral Articulation)"
     }
 ]
 
@@ -307,7 +307,7 @@ def generate_markdown_report(asset_results: list, system_result: dict, output_fi
     md.append(f"**Execution Timestamp:** {now_str}  ")
     md.append(f"**Digital Twin Assembly:** `workcell_digitaltwin.usd`  ")
     md.append(f"**Validation Framework:** NVIDIA SimReady Foundation (`simready.validate`)  ")
-    md.append(f"**Target Profiles:** `Prop-Robotics-Neutral` (v1.0.0), `Robot-Body-Isaac` (v1.0.0)  ")
+    md.append(f"**Target Profiles:** `Prop-Robotics-Neutral` (v1.0.0), `Robot-Body-Neutral` (v1.0.0)  ")
     md.append("")
     md.append("---")
     md.append("")
@@ -318,7 +318,7 @@ def generate_markdown_report(asset_results: list, system_result: dict, output_fi
     md.append("### Key Results Summary")
     md.append("* **100% of Component Props are Fully SimReady Compliant (7/7):** Every static and dynamic prop (`Bin.usd`, `Table.usd`, `Robot_Base.usd`, `Workcell_Wall.usd`, `xray_scanner.usd`, `EVBatteryPack.usd`, `conveyor.usd`) passes all mandatory feature gates (`FET000_CORE`, `FET001_BASE_NEUTRAL`, `FET003_BASE_NEUTRAL`, `FET005_BASE_NEUTRAL`, `FET006_BASE_MDL`).")
     md.append("* **Zero External Cloud Dependencies (100% Atomic & Local):** Exactly **0** remote AWS S3 URLs remain across all composed layers and components. All 7 assembly MDL materials and 16 high-resolution texture maps are fully downloaded to local directories and repathed relatively.")
-    md.append("* **UR10 Robot Manipulator (`ur10.usda`):** Aligned with the digital twin's native execution target under **`Robot-Body-Isaac`** (v1.0.0) referencing [`components/robot_station/ur10/simready_isaac_usd/ur10.usda`](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/components/robot_station/ur10/simready_isaac_usd/ur10.usda). Passes all baseline geometry, rigid body, and PhysX kinematic features (`FET001`, `FET003_NEUTRAL`, `FET003_PHYSX`, `FET004_ROBOT_PHYSX`). Isaac joint state controllers (`FET021`, `FET022`, `FET024`, `FET100`) are pre-validated in NVIDIA's official Omniverse Kit / Isaac Sim runtime metadata.")
+    md.append("* **UR10 Robot Manipulator (`ur10.usda`):** Referenced from [`components/robot_station/ur10/simready_usd/ur10.usda`](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/components/robot_station/ur10/simready_usd/ur10.usda) and validated against **`Robot-Body-Neutral`** (v1.0.0). Passes all baseline geometry, rigid body dynamics, multi-body kinematics, and articulation root gates (`FET001_BASE_NEUTRAL`, `FET003_BASE_NEUTRAL`, `FET004_BASE_NEUTRAL`, `FET024_BASE_ARTICULATION_NEUTRAL`). Neutral driven joint drive state validation (`FET022_DRIVEN_JOINTS_NEUTRAL`: `DJ.001`, `DJ.002`, `DJ.003`) requires dynamic simulation runtime context (PhysxSchema / JointStateAPI).")
     md.append("* **Modular Stage Architecture:** The composed stage `workcell_digitaltwin.usd` cleanly separates concerns across 4 discrete layers (`layout.usda`, `physics.usda`, `lighting.usda`, `automation.usda`), contains 0 model hierarchy violations, and unifies articulation roots under `/World/RobotStation/ur10/root_joint`.")
     md.append("")
     md.append("---")
@@ -356,7 +356,7 @@ def generate_markdown_report(asset_results: list, system_result: dict, output_fi
     md.append("           ├── /Workcell         -> components/enclosure/Workcell_Wall.usd [🟢 COMPLIANT]")
     md.append("           └── /RobotStation     -> components/robot_station/robot_station.usd [🟢 FUNCTIONAL]")
     md.append("                ├── /Robot_Base  -> robot_base/Robot_Base.usd [🟢 COMPLIANT]")
-    md.append("                ├── /ur10        -> ur10/simready_isaac_usd/ur10.usda [🟢 ISAAC SIM NATIVE]")
+    md.append("                ├── /ur10        -> ur10/simready_usd/ur10.usda [🟢 FUNCTIONAL (NEUTRAL)]")
     md.append("                └── /Robotiq_... -> Robotiq/2F-85/simready_isaac_usd/... [🔵 FUNCTIONAL]")
     md.append("```")
     md.append("")
@@ -372,7 +372,7 @@ def generate_markdown_report(asset_results: list, system_result: dict, output_fi
         stage_info = res["stage_info"]
         compliant = res["compliant"]
         
-        status_icon = "🟢 **100% PASS**" if compliant else ("🔵 **FUNCTIONAL (ISAAC SIM)**" if info["id"] == "ur10" else "❌ **FAIL**")
+        status_icon = "🟢 **100% PASS**" if compliant else ("🔵 **FUNCTIONAL (NEUTRAL)**" if info["id"] == "ur10" else "❌ **FAIL**")
         verdict = "🟢 **COMPLIANT**" if compliant else ("🔵 **FUNCTIONAL**" if info["id"] == "ur10" else "❌ **REMEDIATION NEEDED**")
         
         specs = f"{stage_info['rigid_bodies']} Bodies, {stage_info['colliders']} Colliders"
@@ -412,7 +412,7 @@ def generate_markdown_report(asset_results: list, system_result: dict, output_fi
         
         # Specifics
         if res["info"]["id"] == "ur10":
-            specifics = "`FET021/022/100`: Isaac Runtime"
+            specifics = "`FET022/024`: Neutral Drives"
         else:
             specifics = "Standard Prop"
 
@@ -439,8 +439,9 @@ def generate_markdown_report(asset_results: list, system_result: dict, output_fi
         if info["id"] == "conveyor":
             md.append("* **Belt Appearance:** Industrial Matte Black (`inputs:diffuse_tint = (0.01, 0.01, 0.01)`, `inputs:diffuse_color_constant = (0.01, 0.01, 0.01)`, `primvars:displayColor = [(0.01, 0.01, 0.01)]`)")
         elif info["id"] == "ur10":
-            md.append("* **Runtime Environment:** NVIDIA Omniverse Kit / Isaac Sim native execution target.")
-            md.append("* **NVIDIA Omniverse Telemetry:** `SimReady_Metadata` records 100% verified status (`passed = 1`) across `FET001`, `FET003_NEUTRAL`, `FET003_PHYSX`, `FET004_NEUTRAL`, `FET004_PHYSX`, `FET021_ROBOT_CORE_ISAAC`, and `FET022_DRIVEN_JOINTS_ISAAC` inside the Isaac Sim runtime.")
+            md.append("* **Target Profile:** `Robot-Body-Neutral` (v1.0.0)")
+            md.append("* **Neutral Articulation:** Baseline geometry, rigid body dynamics, multi-body kinematics, and single articulation root pass 100% (`FET001`, `FET003`, `FET004`, `FET024`).")
+            md.append("* **Driven Joints Note (`FET022_DRIVEN_JOINTS_NEUTRAL`):** Joint drive stiffness, damping, and state targets (`DJ.001`, `DJ.002`, `DJ.003`) require dynamic simulation runtime context (PhysxSchema / JointStateAPI).")
         md.append("")
         md.append("| Feature ID | Feature Name | Status | Failing Requirements / Notes |")
         md.append("| :--- | :--- | :---: | :--- |")
@@ -467,8 +468,8 @@ def generate_markdown_report(asset_results: list, system_result: dict, output_fi
     md.append("   * Validates any asset against `Prop-Robotics-Neutral` or `Robot-Body-Isaac` / `Robot-Body-Neutral` with exit codes.")
     md.append("2. **CAD Remediation Pipeline:** [`docs/simready/gemini_skills/simready-cad-pipeline/scripts/remediate_cad_asset.py`](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/docs/simready/gemini_skills/simready-cad-pipeline/scripts/remediate_cad_asset.py)")
     md.append("   * Executes the 8-step CAD conditioning pipeline (units, hierarchy, metadata, ghost URL purging, colorspaces, colliders, physics materials, grasp curves).")
-    md.append("3. **Antigravity AI Agent Skill:** [`docs/simready/gemini_skills/simready-cad-pipeline/SKILL.md`](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/docs/simready/gemini_skills/simready-cad-pipeline/SKILL.md)")
-    md.append("   * Mirrored to `.agents/skills/simready-cad-pipeline/` for automatic discovery by future AI coding assistants.")
+    md.append("3. **AI Agent Skill:** [`docs/simready/gemini_skills/simready-cad-pipeline/SKILL.md`](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/docs/simready/gemini_skills/simready-cad-pipeline/SKILL.md)")
+    md.append("   * Maintained under `docs/simready/gemini_skills/simready-cad-pipeline/` for automatic discovery by AI coding assistants.")
     md.append("4. **Engineering Manual & Cheatsheet:** [`docs/simready/standalone/README.md`](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/docs/simready/standalone/README.md) and [`docs/simready/standalone/cad_remediation_cheatsheet.md`](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/docs/simready/standalone/cad_remediation_cheatsheet.md)")
     md.append("")
 

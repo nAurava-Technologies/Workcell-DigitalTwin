@@ -48,7 +48,7 @@ def Xform "World" (
 
         over "Belt"
         {
-            vector3f physics:velocity = (0, 0, 0)
+            vector3f physics:velocity = (0, -1, 0)
         }
     }
 
