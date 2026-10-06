@@ -93,6 +93,7 @@
 )
 
 def Xform "ur10" (
+    kind = "component"
     prepend references = @./payloads/base.usda@
     variants = {
         string Physics = "Physx"

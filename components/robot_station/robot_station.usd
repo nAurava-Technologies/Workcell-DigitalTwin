@@ -34,6 +34,19 @@ def Xform "RobotStation" (
         double3 xformOp:scale:unitsResolve = (1, 1, 1)
         double3 xformOp:translate = (0, 0, 0)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale", "xformOp:scale:unitsResolve"]
+        custom token workcell:mounting = "static"
+
+        over "Robot_Base"
+        {
+            over "tn__Part1_f5"
+            {
+                over "Mesh" (
+                    delete apiSchemas = ["PhysicsRigidBodyAPI"]
+                )
+                {
+                }
+            }
+        }
     }
 
     def "ur10" (
@@ -296,6 +309,8 @@ def Xform "RobotStation" (
             }
         }
         "Vacuum_Gripper" {
+            custom token workcell:toolStatus = "placeholder"
+            string isaac:description = "UR10 station with unimplemented Vacuum_Gripper placeholder: no tool or mounting joint."
             rel isaac:physics:robotJoints = [
                 </RobotStation/ur10/root_joint>,
                 </RobotStation/ur10/joints/shoulder_pan_joint>,

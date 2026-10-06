@@ -19,7 +19,7 @@ metadata:
 Use this skill when:
 1. The user asks to audit, evaluate, or determine the **SimReady (Simulation-Ready)** compliance of 3D assets (`.usd`, `.usda`, `.usdc`).
 2. Raw CAD models (STEP, SolidWorks, JT, IGES, STL) have been exported or modified and need to be ingested into the digital twin.
-3. Assets fail validation against `Prop-Robotics-Neutral` (v1.0.0) or `Robot-Body-Neutral` (v1.0.0).
+3. Assets fail validation against `Prop-Robotics-Neutral` (v1.0.0), `Robot-Body-Isaac` (v1.0.0), or `Robot-Body-Neutral` (v1.0.0).
 
 This skill provides an autonomous, reproducible workflow to inspect OpenUSD stages, triage atomic rule failures, apply physics and material schemas, and verify 100% compliance.
 

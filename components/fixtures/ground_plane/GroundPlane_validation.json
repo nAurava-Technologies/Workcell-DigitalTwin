@@ -1,0 +1,56 @@
+{
+  "asset": "D:\\NVidia\\Omniverse\\Projects\\Factory\\Workcell-DigitalTwin\\components\\fixtures\\ground_plane\\GroundPlane.usd",
+  "profile": "Prop-Robotics-Neutral (v1.0.0)",
+  "compliant": false,
+  "features": {
+    "FET000_CORE": {
+      "name": "Core Naming, Layout & Portability",
+      "passed": true,
+      "optional": false,
+      "failing_requirements": [],
+      "notes": ""
+    },
+    "FET001_BASE_NEUTRAL": {
+      "name": "Base Units (1.0m), Up-Axis & Geometry",
+      "passed": true,
+      "optional": false,
+      "failing_requirements": [],
+      "notes": ""
+    },
+    "FET003_BASE_NEUTRAL": {
+      "name": "Rigid Body Dynamics (Neutral)",
+      "passed": false,
+      "optional": false,
+      "failing_requirements": [
+        "RB.001"
+      ],
+      "notes": ""
+    },
+    "FET004_BASE_NEUTRAL": {
+      "name": "Multi-Body Articulation (Neutral)",
+      "passed": false,
+      "optional": true,
+      "failing_requirements": [
+        "RB.001",
+        "RB.MB.001"
+      ],
+      "notes": ""
+    },
+    "FET005_BASE_NEUTRAL": {
+      "name": "Grasp Affordance & Physics Materials",
+      "passed": false,
+      "optional": false,
+      "failing_requirements": [
+        "GSP.001"
+      ],
+      "notes": ""
+    },
+    "FET006_BASE_MDL": {
+      "name": "MDL Shaders & Texture Localizations",
+      "passed": true,
+      "optional": false,
+      "failing_requirements": [],
+      "notes": ""
+    }
+  }
+}

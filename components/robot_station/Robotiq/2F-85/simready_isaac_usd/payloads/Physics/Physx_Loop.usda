@@ -2,7 +2,7 @@
 (
     defaultPrim = "Robotiq_2F_85"
     subLayers = [
-        @Physics.usda@
+        @./Physics.usda@
     ]
     endTimeCode = 0
     metersPerUnit = 1

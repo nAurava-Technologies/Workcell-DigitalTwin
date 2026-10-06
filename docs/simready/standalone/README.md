@@ -71,15 +71,24 @@ graph TD
 * **`FET005_BASE_NEUTRAL`:** Verifies the presence of robotic grasp guidance curves (`UsdGeom.BasisCurves`) under `/AssetRoot/grasp_identifier_01` (`GSP.001`).
 * **`FET006_BASE_MDL`:** Ensures all shaders use standard NVIDIA MDL schemas (`OmniPBR.mdl` or `OmniSurface.mdl`), resolve locally, and have valid texture mappings.
 
-### 3.2 `Robot-Body-Neutral` (v1.0.0)
+### 3.2 Robot Profiles: `Robot-Body-Isaac` & `Robot-Body-Neutral` (v1.0.0)
 
 Used for industrial manipulators and robot arms (e.g., Universal Robots UR10).
 
-* **`FET001_BASE_NEUTRAL`:** Base geometry and units verification.
-* **`FET003_BASE_NEUTRAL`:** Dynamic links and inertia tensors for all kinematic segments.
-* **`FET004_BASE_NEUTRAL`:** Complete multi-body kinematic tree, joint limits, axes, and link chains.
-* **`FET024_BASE_ARTICULATION`:** Exactly **1** unified `UsdPhysics.ArticulationRootAPI` authored at the robot's base or root joint.
-* **Runtime Note (`FET022`):** Joint drive state schemas (`pxr.PhysxSchema.JointStateAPI`) operate inside the Omniverse Kit / Isaac Sim runtime where NVIDIA's closed-source PhysX extension is loaded.
+#### 1. `Robot-Body-Isaac` (v1.0.0) — Digital Twin Native Target
+Authored at [`components/robot_station/ur10/simready_isaac_usd/ur10.usda`](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/components/robot_station/ur10/simready_isaac_usd/ur10.usda) and referenced in `robot_station.usd`:
+* **`FET001_BASE_NEUTRAL`:** Base geometry and units verification (`metersPerUnit = 1.0`, `upAxis = "Z"`).
+* **`FET003_BASE_PHYSX`:** Dynamic link rigid bodies, PhysX collision approximation, mass and inertia tensors.
+* **`FET004_ROBOT_PHYSX`:** Complete multi-link kinematic tree, revolute joint limits, axes, and PhysX colliders.
+* **`FET021_ROBOT_CORE_ISAAC`:** Isaac robot metadata, namespace declarations, and camera/thumbnail definitions.
+* **`FET022_DRIVEN_JOINTS_ISAAC`:** Joint drive controllers, drive stiffness/damping, target velocity, and PhysxSchema state APIs.
+* **`FET024_BASE_ARTICULATION_PHYSX`:** Base articulation root with non-adjacent link collision clearance.
+* **`FET100_BASE_ISAACSIM`:** Isaac Sim payload packaging, reference schemas, and layer hierarchy.
+* **Runtime Execution Note:** Joint drive controller states (`pxr.PhysxSchema.JointStateAPI`) and runtime clearance checks operate inside the **NVIDIA Omniverse Kit / Isaac Sim** runtime environment (`isaac-sim.bat --python`). NVIDIA pre-validation telemetry recording full pass status across all features is embedded in the root layer's `customLayerData`.
+
+#### 2. `Robot-Body-Neutral` (v1.0.0) — OpenUSD Portable Baseline
+Authored at [`components/robot_station/ur10/simready_usd/ur10.usda`](file:///D:/NVidia/Omniverse/Projects/Factory/Workcell-DigitalTwin/components/robot_station/ur10/simready_usd/ur10.usda):
+* Pure OpenUSD representation without Isaac Sim or PhysX-proprietary extension schemas, providing runtime-agnostic portability for DCC tools and external USD renderers.
 
 ---
 

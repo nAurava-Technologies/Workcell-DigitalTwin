@@ -150,7 +150,8 @@ To maintain 100% asset portability:
 To verify all digital twin invariants before completing any modification, run:
 
 ```bash
-python scratch/full_system_verification.py
+# Workspace verification runner
+python docs/workcell-digitaltwin/helper_scripts/full_system_verification.py
 ```
 
 Expected verification criteria:

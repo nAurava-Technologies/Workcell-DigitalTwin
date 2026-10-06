@@ -1,5 +1,19 @@
 #usda 1.0
 (
+    customLayerData = {
+        dictionary SimReady_Metadata = {
+            string asset_name = "GroundPlane"
+            string asset_type = "static_environment_floor"
+            string description = "Unlimited static floor at Z=0 with a 50 x 50 metre visual surface."
+            string intended_role = "Static environment collision; not a movable or graspable prop."
+            string provenance = "Existing Workcell-DigitalTwin procedural USD plane and quad; original author and generation date are not recorded."
+            string source_file = "GroundPlane.usd"
+            string usd_date_generated = "unknown"
+            string date_modified = "2026-10-02"
+            string collision_footprint = "Infinite Z-up plane; visual edges do not limit collision."
+            string validation_scope = "Static-floor project requirements; not a full Prop-Robotics-Neutral pass. See README.md."
+        }
+    }
     defaultPrim = "GroundPlane"
     metersPerUnit = 1
     upAxis = "Z"
@@ -18,6 +32,16 @@ def Xform "GroundPlane" (
 
     def Scope "Looks"
     {
+        def Material "FloorPhysics" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            # Dry, moderately grippy industrial floor approximation; not measured data.
+            float physics:staticFriction = 0.6
+            float physics:dynamicFriction = 0.5
+            float physics:restitution = 0.0
+        }
+
         def Material "Chalk_Paint_Pebbles_Charcoal_Blue"
         {
             token outputs:mdl:displacement.connect = </GroundPlane/Looks/Chalk_Paint_Pebbles_Charcoal_Blue/Shader.outputs:out>
@@ -36,7 +60,7 @@ def Xform "GroundPlane" (
         }
     }
 
-    def Mesh "CollisionMesh"
+    def Mesh "VisualMesh"
     {
         uniform bool doubleSided = 0
         float3[] extent = [(-25, -25, 0), (25, 25, 0)]
@@ -55,9 +79,12 @@ def Xform "GroundPlane" (
     }
 
     def Plane "CollisionPlane" (
-        prepend apiSchemas = ["PhysicsCollisionAPI"]
+        prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+        doc = "Infinite static floor at Z=0, including beyond the 50 x 50 metre VisualMesh. Intentionally has no rigid body."
     )
     {
+        rel material:binding:physics = </GroundPlane/Looks/FloorPhysics>
+        bool physics:collisionEnabled = 1
         uniform token axis = "Z"
         uniform token purpose = "guide"
     }

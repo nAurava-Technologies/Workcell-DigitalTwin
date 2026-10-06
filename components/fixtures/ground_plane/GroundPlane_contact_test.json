@@ -1,0 +1,70 @@
+{
+  "asset": "components/fixtures/ground_plane/GroundPlane.usd",
+  "asset_sha256": "befce76b1aa0bca9e979c09e7c5a36b309628c3b82f8400b4bc854795cb36958",
+  "simulator": "Isaac Sim / PhysX CPU",
+  "dt_s": 0.008333333333333333,
+  "duration_s": 4,
+  "counterpart": "0.2 m cube, 1 kg, floor physics material, zero damping",
+  "checks": {
+    "drop_supported": true,
+    "drop_fell": true,
+    "drop_low_rebound": true,
+    "slide_supported": true,
+    "beyond_visual_edge_supported": true,
+    "beyond_visual_edge_fell": true,
+    "beyond_visual_edge_low_rebound": true,
+    "slide_friction_stops_body": true
+  },
+  "metrics": {
+    "drop": {
+      "final": {
+        "position": [
+          -0.0001673353253863752,
+          0.0001670412311796099,
+          0.10000000894069672
+        ],
+        "velocity": [
+          -1.046065881382674e-05,
+          0.0001071519436663948,
+          -0.00011892370093846694
+        ]
+      },
+      "minimum_center_z_m": 0.09999985247850418,
+      "rebound_height_m": 9.255111217493228e-06
+    },
+    "slide": {
+      "final": {
+        "position": [
+          0.3994479775428772,
+          1.9999734163284302,
+          0.09999994188547134
+        ],
+        "velocity": [
+          -8.106348104774952e-06,
+          0.0001163053311756812,
+          -0.00012216749018989503
+        ]
+      },
+      "minimum_center_z_m": 0.09999876469373703,
+      "distance_m": 0.3994479775428772,
+      "final_speed_m_s": 0.00016887136735022068
+    },
+    "beyond_visual_edge": {
+      "final": {
+        "position": [
+          29.999832153320312,
+          0.00016638747183606029,
+          0.09999429434537888
+        ],
+        "velocity": [
+          -0.00026578211691230536,
+          0.00021568997181020677,
+          -0.00018475405522622168
+        ]
+      },
+      "minimum_center_z_m": 0.09999356418848038,
+      "rebound_height_m": 4.389882087701968e-06
+    }
+  },
+  "passed": true
+}

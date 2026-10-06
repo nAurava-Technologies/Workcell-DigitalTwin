@@ -66,13 +66,11 @@
                     token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                     def Xform "Defeatured_2F_85_PAD_OPEN_basestep" (
-                        apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxTriangleMeshCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", ]
-                        prepend references = @geometries.usd@</Geometries/Defeatured_2F_85_PAD_OPEN_basestep>
+                        apiSchemas = None
+                        prepend references = @./geometries.usd@</Geometries/Defeatured_2F_85_PAD_OPEN_basestep>
                     )
                     {
                         double[] inertiaMatrix = [0.0004746842222151654, 1.1593848512898524e-9, -2.353766274892451e-8, 1.1593848512898524e-9, 0.00036290683417457444, -3.0421779496695915e-7, -2.353766274892451e-8, -3.0421779496695915e-7, 0.0005407481985062766]
-                        token physics:approximation = "convexHull"
-                        bool physics:collisionEnabled = 1
                         
                         over "Defeatured_2F_85_PAD_OPEN_basestep" (
                             apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxTriangleMeshCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", ]
@@ -175,77 +173,77 @@
                         {
                             def Material "Cod_Gray" (
                                 instanceable = true
-                                prepend references = @materials.usda@</Materials/Cod_Gray>
+                                prepend references = @./materials.usda@</Materials/Cod_Gray>
                             )
                             {
                             }
 
                             def Material "Stack" (
                                 instanceable = true
-                                prepend references = @materials.usda@</Materials/Stack>
+                                prepend references = @./materials.usda@</Materials/Stack>
                             )
                             {
                             }
 
                             def Material "Chateau_Green" (
                                 instanceable = true
-                                prepend references = @materials.usda@</Materials/Chateau_Green>
+                                prepend references = @./materials.usda@</Materials/Chateau_Green>
                             )
                             {
                             }
 
                             def Material "Gravel" (
                                 instanceable = true
-                                prepend references = @materials.usda@</Materials/Gravel>
+                                prepend references = @./materials.usda@</Materials/Gravel>
                             )
                             {
                             }
 
                             def Material "Silver_Rust" (
                                 instanceable = true
-                                prepend references = @materials.usda@</Materials/Silver_Rust>
+                                prepend references = @./materials.usda@</Materials/Silver_Rust>
                             )
                             {
                             }
 
                             def Material "Gallery" (
                                 instanceable = true
-                                prepend references = @materials.usda@</Materials/Gallery>
+                                prepend references = @./materials.usda@</Materials/Gallery>
                             )
                             {
                             }
 
                             def Material "Blue_Ribbon" (
                                 instanceable = true
-                                prepend references = @materials.usda@</Materials/Blue_Ribbon>
+                                prepend references = @./materials.usda@</Materials/Blue_Ribbon>
                             )
                             {
                             }
 
                             def Material "Dawn" (
                                 instanceable = true
-                                prepend references = @materials.usda@</Materials/Dawn>
+                                prepend references = @./materials.usda@</Materials/Dawn>
                             )
                             {
                             }
 
                             def Material "White" (
                                 instanceable = true
-                                prepend references = @materials.usda@</Materials/White>
+                                prepend references = @./materials.usda@</Materials/White>
                             )
                             {
                             }
 
                             def Material "Gray" (
                                 instanceable = true
-                                prepend references = @materials.usda@</Materials/Gray>
+                                prepend references = @./materials.usda@</Materials/Gray>
                             )
                             {
                             }
 
                             def Material "Mystic" (
                                 instanceable = true
-                                prepend references = @materials.usda@</Materials/Mystic>
+                                prepend references = @./materials.usda@</Materials/Mystic>
                             )
                             {
                             }
@@ -272,13 +270,11 @@
                     token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                     def Xform "Defeatured_2F_85_PAD_OPEN_Finger1step" (
-                        apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxTriangleMeshCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI",  "MaterialBindingAPI"]
-                        prepend references = @geometries.usd@</Geometries/Defeatured_2F_85_PAD_OPEN_Finger1step>
+                        apiSchemas = ["MaterialBindingAPI"]
+                        prepend references = @./geometries.usd@</Geometries/Defeatured_2F_85_PAD_OPEN_Finger1step>
                     )
                     {
                         double[] inertiaMatrix = [3.3172591921657694e-7, -1.4530204096372698e-7, 0, -1.4530204096372698e-7, 0.000002045423971425186, 0, 0, 0, 0.0000021349242437293255]
-                        token physics:approximation = "convexHull"
-                        bool physics:collisionEnabled = 1
                         
                         over "Defeatured_2F_85_PAD_OPEN_Finger1step" (
                             apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxTriangleMeshCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI",  "MaterialBindingAPI"]
@@ -296,7 +292,7 @@
                         {
                             def Material "Pumice" (
                                 instanceable = true
-                                prepend references = @materials.usda@</Materials/Pumice>
+                                prepend references = @./materials.usda@</Materials/Pumice>
                             )
                             {
                             }
@@ -330,13 +326,11 @@
                     token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                     def Xform "Defeatured_2F_85_PAD_OPEN_Finger1step" (
-                        apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxTriangleMeshCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI",  "MaterialBindingAPI"]
-                        prepend references = @geometries.usd@</Geometries/Defeatured_2F_85_PAD_OPEN_Finger1step>
+                        apiSchemas = ["MaterialBindingAPI"]
+                        prepend references = @./geometries.usd@</Geometries/Defeatured_2F_85_PAD_OPEN_Finger1step>
                     )
                     {
                         double[] inertiaMatrix = [3.3172591921657694e-7, -1.4530204096372698e-7, 0, -1.4530204096372698e-7, 0.000002045423971425186, 0, 0, 0, 0.0000021349242437293255]
-                        token physics:approximation = "convexHull"
-                        bool physics:collisionEnabled = 1                        
                         over "Defeatured_2F_85_PAD_OPEN_Finger1step" (
                             apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxTriangleMeshCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI",  "MaterialBindingAPI"]
                         )
@@ -354,7 +348,7 @@
                         {
                             def Material "Pumice" (
                                 instanceable = true
-                                prepend references = @base.usda@</Robotiq_2F_85/VisualMaterials/Pumice>
+                                prepend references = @./base.usda@</Robotiq_2F_85/VisualMaterials/Pumice>
                             )
                             {
                             }
@@ -381,13 +375,11 @@
                     token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                     def Xform "Defeatured_2F_85_PAD_OPEN_finger2step" (
-                        apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxTriangleMeshCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", ]
-                        prepend references = @geometries.usd@</Geometries/Defeatured_2F_85_PAD_OPEN_finger2step>
+                        apiSchemas = None
+                        prepend references = @./geometries.usd@</Geometries/Defeatured_2F_85_PAD_OPEN_finger2step>
                     )
                     {
                         double[] inertiaMatrix = [0.000012638332145022882, 0.000002203588960140742, -8.504687024042132e-10, 0.000002203588960140742, 0.000004874970457524958, 4.026630666546916e-9, -8.504687024042132e-10, 4.026630666546916e-9, 0.000010880904291232196]
-                        token physics:approximation = "convexHull"
-                        bool physics:collisionEnabled = 1
                         
 
                         over "Defeatured_2F_85_PAD_OPEN_finger2step" (
@@ -419,14 +411,14 @@
                         {
                             def Material "Cod_Gray" (
                                 instanceable = true
-                                prepend references = @materials.usda@</Materials/Cod_Gray>
+                                prepend references = @./materials.usda@</Materials/Cod_Gray>
                             )
                             {
                             }
 
                             def Material "Periwinkle_Gray" (
                                 instanceable = true
-                                prepend references = @materials.usda@</Materials/Periwinkle_Gray>
+                                prepend references = @./materials.usda@</Materials/Periwinkle_Gray>
                             )
                             {
                             }
@@ -460,13 +452,11 @@
                     token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                     def Xform "Defeatured_2F_85_PAD_OPEN_finger2step" (
-                        apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxTriangleMeshCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", ]
-                        prepend references = @geometries.usd@</Geometries/Defeatured_2F_85_PAD_OPEN_finger2step>
+                        apiSchemas = None
+                        prepend references = @./geometries.usd@</Geometries/Defeatured_2F_85_PAD_OPEN_finger2step>
                     )
                     {
                         double[] inertiaMatrix = [0.000012638332145022882, 0.000002203588960140742, -8.504687024042132e-10, 0.000002203588960140742, 0.000004874970457524958, 4.026630666546916e-9, -8.504687024042132e-10, 4.026630666546916e-9, 0.000010880904291232196]
-                        token physics:approximation = "convexHull"
-                        bool physics:collisionEnabled = 1
                         
                         over "Defeatured_2F_85_PAD_OPEN_finger2step" (
                             apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxTriangleMeshCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI", ]
@@ -497,14 +487,14 @@
                         {
                             def Material "Cod_Gray" (
                                 instanceable = true
-                                prepend references = @base.usda@</Robotiq_2F_85/VisualMaterials/Cod_Gray>
+                                prepend references = @./base.usda@</Robotiq_2F_85/VisualMaterials/Cod_Gray>
                             )
                             {
                             }
 
                             def Material "Periwinkle_Gray" (
                                 instanceable = true
-                                prepend references = @base.usda@</Robotiq_2F_85/VisualMaterials/Periwinkle_Gray>
+                                prepend references = @./base.usda@</Robotiq_2F_85/VisualMaterials/Periwinkle_Gray>
                             )
                             {
                             }
@@ -521,7 +511,7 @@
                 def Xform "Defeatured_2F_85_PAD_OPEN_finger4step_01"
                 {
                     def Xform "Defeatured_2F_85_PAD_OPEN_finger4step" (
-                        prepend references = @geometries.usd@</Geometries/Defeatured_2F_85_PAD_OPEN_finger4step>
+                        prepend references = @./geometries.usd@</Geometries/Defeatured_2F_85_PAD_OPEN_finger4step>
                     )
                     {
                         over "Defeatured_2F_85_PAD_OPEN_finger4step" (
@@ -577,35 +567,35 @@
                         {
                             def Material "Cod_Gray" (
                                 instanceable = true
-                                prepend references = @materials.usda@</Materials/Cod_Gray>
+                                prepend references = @./materials.usda@</Materials/Cod_Gray>
                             )
                             {
                             }
 
                             def Material "Stack" (
                                 instanceable = true
-                                prepend references = @materials.usda@</Materials/Stack>
+                                prepend references = @./materials.usda@</Materials/Stack>
                             )
                             {
                             }
 
                             def Material "Periwinkle_Gray" (
                                 instanceable = true
-                                prepend references = @materials.usda@</Materials/Periwinkle_Gray>
+                                prepend references = @./materials.usda@</Materials/Periwinkle_Gray>
                             )
                             {
                             }
 
                             def Material "Celeste" (
                                 instanceable = true
-                                prepend references = @materials.usda@</Materials/Celeste>
+                                prepend references = @./materials.usda@</Materials/Celeste>
                             )
                             {
                             }
 
                             def Material "Rangoon_Green" (
                                 instanceable = true
-                                prepend references = @materials.usda@</Materials/Rangoon_Green>
+                                prepend references = @./materials.usda@</Materials/Rangoon_Green>
                             )
                             {
                             }
@@ -616,7 +606,7 @@
                 def Xform "Defeatured_2F_85_PAD_OPEN_fingertipsstep_01"
                 {
                     def Xform "Defeatured_2F_85_PAD_OPEN_fingertipsstep" (
-                        prepend references = @geometries.usd@</Geometries/Defeatured_2F_85_PAD_OPEN_fingertipsstep>
+                        prepend references = @./geometries.usd@</Geometries/Defeatured_2F_85_PAD_OPEN_fingertipsstep>
                     )
                     {
                         over "Defeatured_2F_85_PAD_OPEN_fingertipsstep" (
@@ -648,14 +638,14 @@
                         {
                             def Material "Nobel" (
                                 instanceable = true
-                                prepend references = @materials.usda@</Materials/Nobel>
+                                prepend references = @./materials.usda@</Materials/Nobel>
                             )
                             {
                             }
 
                             def Material "Rangoon_Green" (
                                 instanceable = true
-                                prepend references = @materials.usda@</Materials/Rangoon_Green>
+                                prepend references = @./materials.usda@</Materials/Rangoon_Green>
                             )
                             {
                             }
@@ -672,7 +662,7 @@
                 def Xform "Defeatured_2F_85_PAD_OPEN_finger4step_01"
                 {
                     def Xform "Defeatured_2F_85_PAD_OPEN_finger4step" (
-                        prepend references = @geometries.usd@</Geometries/Defeatured_2F_85_PAD_OPEN_finger4step>
+                        prepend references = @./geometries.usd@</Geometries/Defeatured_2F_85_PAD_OPEN_finger4step>
                     )
                     {
                         over "Defeatured_2F_85_PAD_OPEN_finger4step" (
@@ -728,35 +718,35 @@
                         {
                             def Material "Cod_Gray" (
                                 instanceable = true
-                                prepend references = @materials.usda@</Materials/Cod_Gray>
+                                prepend references = @./materials.usda@</Materials/Cod_Gray>
                             )
                             {
                             }
 
                             def Material "Stack" (
                                 instanceable = true
-                                prepend references = @materials.usda@</Materials/Stack>
+                                prepend references = @./materials.usda@</Materials/Stack>
                             )
                             {
                             }
 
                             def Material "Periwinkle_Gray" (
                                 instanceable = true
-                                prepend references = @materials.usda@</Materials/Periwinkle_Gray>
+                                prepend references = @./materials.usda@</Materials/Periwinkle_Gray>
                             )
                             {
                             }
 
                             def Material "Celeste" (
                                 instanceable = true
-                                prepend references = @materials.usda@</Materials/Celeste>
+                                prepend references = @./materials.usda@</Materials/Celeste>
                             )
                             {
                             }
 
                             def Material "Rangoon_Green" (
                                 instanceable = true
-                                prepend references = @materials.usda@</Materials/Rangoon_Green>
+                                prepend references = @./materials.usda@</Materials/Rangoon_Green>
                             )
                             {
                             }
@@ -767,7 +757,7 @@
                 def Xform "Defeatured_2F_85_PAD_OPEN_fingertipsstep_01"
                 {
                     def Xform "Defeatured_2F_85_PAD_OPEN_fingertipsstep" (
-                        prepend references = @geometries.usd@</Geometries/Defeatured_2F_85_PAD_OPEN_fingertipsstep>
+                        prepend references = @./geometries.usd@</Geometries/Defeatured_2F_85_PAD_OPEN_fingertipsstep>
                     )
                     {
                         over "Defeatured_2F_85_PAD_OPEN_fingertipsstep" (
@@ -799,14 +789,14 @@
                         {
                             def Material "Nobel" (
                                 instanceable = true
-                                prepend references = @materials.usda@</Materials/Nobel>
+                                prepend references = @./materials.usda@</Materials/Nobel>
                             )
                             {
                             }
 
                             def Material "Rangoon_Green" (
                                 instanceable = true
-                                prepend references = @materials.usda@</Materials/Rangoon_Green>
+                                prepend references = @./materials.usda@</Materials/Rangoon_Green>
                             )
                             {
                             }
@@ -833,13 +823,11 @@
                     token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                     def Xform "Defeatured_2F_85_PAD_OPEN_finger3step" (
-                        apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxTriangleMeshCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI",  "MaterialBindingAPI"]
-                        prepend references = @geometries.usd@</Geometries/Defeatured_2F_85_PAD_OPEN_finger3step>
+                        apiSchemas = ["MaterialBindingAPI"]
+                        prepend references = @./geometries.usd@</Geometries/Defeatured_2F_85_PAD_OPEN_finger3step>
                     )
                     {
                         double[] inertiaMatrix = [0.000008622018967333509, 0.000003646759055662086, 4.5608098039667545e-14, 0.000003646759055662086, 0.000007704538039225997, -1.4189806527411122e-14, 4.5608098039667545e-14, -1.4189806527411122e-14, 0.00000800488002567704]
-                        token physics:approximation = "convexHull"
-                        bool physics:collisionEnabled = 1
                         
                         over "Defeatured_2F_85_PAD_OPEN_finger3step" (
                             apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxTriangleMeshCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI",  "MaterialBindingAPI"]
@@ -857,7 +845,7 @@
                         {
                             def Material "Cod_Gray" (
                                 instanceable = true
-                                prepend references = @materials.usda@</Materials/Cod_Gray>
+                                prepend references = @./materials.usda@</Materials/Cod_Gray>
                             )
                             {
                             }
@@ -891,13 +879,11 @@
                     token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
                     def Xform "Defeatured_2F_85_PAD_OPEN_finger3step" (
-                        apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxTriangleMeshCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI",  "MaterialBindingAPI"]
-                        prepend references = @geometries.usd@</Geometries/Defeatured_2F_85_PAD_OPEN_finger3step>
+                        apiSchemas = ["MaterialBindingAPI"]
+                        prepend references = @./geometries.usd@</Geometries/Defeatured_2F_85_PAD_OPEN_finger3step>
                     )
                     {
                         double[] inertiaMatrix = [0.000008622018967333509, 0.000003646759055662086, 4.5608098039667545e-14, 0.000003646759055662086, 0.000007704538039225997, -1.4189806527411122e-14, 4.5608098039667545e-14, -1.4189806527411122e-14, 0.00000800488002567704]
-                        token physics:approximation = "convexHull"
-                        bool physics:collisionEnabled = 1
                         
                         over "Defeatured_2F_85_PAD_OPEN_finger3step" (
                             apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxTriangleMeshCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexHullCollisionAPI",  "MaterialBindingAPI"]
@@ -915,7 +901,7 @@
                         {
                             def Material "Cod_Gray" (
                                 instanceable = true
-                                prepend references = @base.usda@</Robotiq_2F_85/VisualMaterials/Cod_Gray>
+                                prepend references = @./base.usda@</Robotiq_2F_85/VisualMaterials/Cod_Gray>
                             )
                             {
                             }

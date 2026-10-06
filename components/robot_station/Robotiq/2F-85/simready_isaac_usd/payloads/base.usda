@@ -37,7 +37,7 @@
     metersPerUnit = 1
     startTimeCode = -1
     subLayers = [
-        @robot.usda@
+        @./robot.usda@
     ]
     upAxis = "Z"
 )
@@ -67,7 +67,7 @@ def Xform "Robotiq_2F_85" (
                 apiSchemas = None
                 instanceable = true
                 kind = "subcomponent"
-                references = @instances.usda@</Robotiq_2F_85/base_link/visuals>
+                references = @./instances.usda@</Robotiq_2F_85/base_link/visuals>
             )
             {
                 quatd xformOp:orient = (0.4999999999999999, 0.5000000000000001, 0.5000000000000001, 0.5000000000000001)
@@ -89,7 +89,7 @@ def Xform "Robotiq_2F_85" (
             def Xform "visuals" (
                 instanceable = true
                 kind = "subcomponent"
-                references = @instances.usda@</Robotiq_2F_85/left_outer_knuckle/visuals>
+                references = @./instances.usda@</Robotiq_2F_85/left_outer_knuckle/visuals>
             )
             {
                 quatd xformOp:orient = (0.4999999999999999, 0.5000000000000001, 0.5000000000000001, 0.5000000000000001)
@@ -111,7 +111,7 @@ def Xform "Robotiq_2F_85" (
             def Xform "visuals" (
                 instanceable = true
                 kind = "subcomponent"
-                references = @instances.usda@</Robotiq_2F_85/left_outer_finger/visuals>
+                references = @./instances.usda@</Robotiq_2F_85/left_outer_finger/visuals>
             )
             {
                 quatd xformOp:orient = (0.4999999999999999, 0.5000000000000001, 0.5000000000000001, 0.5000000000000001)
@@ -149,7 +149,7 @@ def Xform "Robotiq_2F_85" (
 
                     over Xform "Defeatured_2F_85_PAD_OPEN_finger4step" (
                         instanceable = true
-                        prepend references = @instances.usda@</Robotiq_2F_85/left_inner_finger/visuals/Defeatured_2F_85_PAD_OPEN_finger4step_01/Defeatured_2F_85_PAD_OPEN_finger4step>
+                        prepend references = @./instances.usda@</Robotiq_2F_85/left_inner_finger/visuals/Defeatured_2F_85_PAD_OPEN_finger4step_01/Defeatured_2F_85_PAD_OPEN_finger4step>
                     )
                     {
                     }
@@ -164,7 +164,7 @@ def Xform "Robotiq_2F_85" (
 
                     over Xform "Defeatured_2F_85_PAD_OPEN_fingertipsstep" (
                         instanceable = true
-                        prepend references = @instances.usda@</Robotiq_2F_85/left_inner_finger/visuals/Defeatured_2F_85_PAD_OPEN_fingertipsstep_01/Defeatured_2F_85_PAD_OPEN_fingertipsstep>
+                        prepend references = @./instances.usda@</Robotiq_2F_85/left_inner_finger/visuals/Defeatured_2F_85_PAD_OPEN_fingertipsstep_01/Defeatured_2F_85_PAD_OPEN_fingertipsstep>
                     )
                     {
                     }
@@ -184,7 +184,7 @@ def Xform "Robotiq_2F_85" (
             def Xform "visuals" (
                 instanceable = true
                 kind = "subcomponent"
-                references = @instances.usda@</Robotiq_2F_85/left_inner_knuckle/visuals>
+                references = @./instances.usda@</Robotiq_2F_85/left_inner_knuckle/visuals>
             )
             {
                 quatd xformOp:orient = (0.4999999999999999, 0.5000000000000001, 0.5000000000000001, 0.5000000000000001)
@@ -206,7 +206,7 @@ def Xform "Robotiq_2F_85" (
             def Xform "visuals" (
                 instanceable = true
                 kind = "subcomponent"
-                references = @instances.usda@</Robotiq_2F_85/left_outer_knuckle/visuals>
+                references = @./instances.usda@</Robotiq_2F_85/left_outer_knuckle/visuals>
             )
             {
                 quatd xformOp:orient = (0.4999999999999999, 0.5000000000000001, -0.5000000000000001, -0.5000000000000001)
@@ -228,7 +228,7 @@ def Xform "Robotiq_2F_85" (
             def Xform "visuals" (
                 instanceable = true
                 kind = "subcomponent"
-                references = @instances.usda@</Robotiq_2F_85/left_outer_finger/visuals>
+                references = @./instances.usda@</Robotiq_2F_85/left_outer_finger/visuals>
             )
             {
                 quatd xformOp:orient = (0.4999999999999999, 0.5000000000000001, -0.5000000000000001, -0.5000000000000001)
@@ -266,7 +266,7 @@ def Xform "Robotiq_2F_85" (
 
                     over Xform "Defeatured_2F_85_PAD_OPEN_finger4step" (
                         instanceable = true
-                        prepend references = @instances.usda@</Robotiq_2F_85/right_inner_finger/visuals/Defeatured_2F_85_PAD_OPEN_finger4step_01/Defeatured_2F_85_PAD_OPEN_finger4step>
+                        prepend references = @./instances.usda@</Robotiq_2F_85/right_inner_finger/visuals/Defeatured_2F_85_PAD_OPEN_finger4step_01/Defeatured_2F_85_PAD_OPEN_finger4step>
                     )
                     {
                     }
@@ -281,7 +281,7 @@ def Xform "Robotiq_2F_85" (
 
                     over Xform "Defeatured_2F_85_PAD_OPEN_fingertipsstep" (
                         instanceable = true
-                        prepend references = @instances.usda@</Robotiq_2F_85/right_inner_finger/visuals/Defeatured_2F_85_PAD_OPEN_fingertipsstep_01/Defeatured_2F_85_PAD_OPEN_fingertipsstep>
+                        prepend references = @./instances.usda@</Robotiq_2F_85/right_inner_finger/visuals/Defeatured_2F_85_PAD_OPEN_fingertipsstep_01/Defeatured_2F_85_PAD_OPEN_fingertipsstep>
                     )
                     {
                     }
@@ -301,7 +301,7 @@ def Xform "Robotiq_2F_85" (
             def Xform "visuals" (
                 instanceable = true
                 kind = "subcomponent"
-                references = @instances.usda@</Robotiq_2F_85/left_inner_knuckle/visuals>
+                references = @./instances.usda@</Robotiq_2F_85/left_inner_knuckle/visuals>
             )
             {
                 quatd xformOp:orient = (0.4999999999999999, 0.5000000000000001, -0.5000000000000001, -0.5000000000000001)

@@ -36,7 +36,7 @@ docs/simready/
 
 ### 1. [`standalone/`](./standalone/)
 * **Target Audience:** Robotics engineers, simulation developers, 3D artists, technical directors, and external automation systems.
-* **Purpose:** A complete, standalone architectural specification and runbook explaining OpenUSD SimReady principles, profile requirements (`Prop-Robotics-Neutral`, `Robot-Body-Neutral`), physics authoring standards, material rules, and manual triage procedures.
+* **Purpose:** A complete, standalone architectural specification and runbook explaining OpenUSD SimReady principles, profile requirements (`Prop-Robotics-Neutral`, `Robot-Body-Isaac`, `Robot-Body-Neutral`), physics authoring standards, material rules, and manual triage procedures.
 * **Key Files:**
   * [`standalone/README.md`](./standalone/README.md): In-depth architectural guide and CAD-to-SimReady ingestion protocol.
   * [`standalone/cad_remediation_cheatsheet.md`](./standalone/cad_remediation_cheatsheet.md): Fast code snippets and one-liner fixes for common validation codes (`UN.007`, `PMT.001`, `NP.008`, `AA.001`, `VM.TEX.002`, `GSP.001`).

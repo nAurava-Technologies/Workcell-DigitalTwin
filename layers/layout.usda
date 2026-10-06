@@ -48,7 +48,7 @@ def Xform "World" (
 
         over "Belt"
         {
-            vector3f physics:velocity = (0, -1, 0)
+            vector3f physics:velocity = (0, 0, 0)
         }
     }
 
@@ -256,6 +256,19 @@ def Xform "World" (
                 }
             }
         }
+
+        over "ToolMountJoint"
+        {
+            bool[] isaac:actuator (
+                displayName = "Actuator"
+            )
+            string isaac:NameOverride (
+                displayName = "Joint Name Override"
+            )
+            token[] isaac:physics:DofOffsetOpOrder (
+                displayName = "Dof Offset Op Order"
+            )
+        }
     }
 
     def Xform "Workcell" (
@@ -454,6 +467,14 @@ def Xform "World" (
                 {
                 }
             }
+        }
+    }
+
+    over "ActionGraph"
+    {
+        over "constant_double_03"
+        {
+            custom double inputs:value = 0.65
         }
     }
 }
