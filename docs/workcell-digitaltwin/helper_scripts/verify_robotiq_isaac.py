@@ -11,6 +11,7 @@ import os
 from pathlib import Path
 import sys
 import traceback
+import time
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -35,6 +36,20 @@ ASSET_DIR = ROOT / "components/robot_station/Robotiq/2F-85/simready_isaac_usd"
 ASSET = ASSET_DIR / "Robotiq_2F_85.usda"
 FOUNDATION = Path(os.environ.get("SIMREADY_FOUNDATION_ROOT", ROOT.parent.parent / "SimReady/simready-foundation"))
 OUTPUT = ROOT / "docs/simready/Robotiq_isaac_verification.json"
+
+
+def save_report(report):
+    """Publish complete JSON atomically; tolerate brief Windows reader locks."""
+    temporary = OUTPUT.with_suffix(".json.tmp")
+    temporary.write_text(json.dumps(report, indent=2, default=str) + "\n", encoding="utf-8")
+    for attempt in range(10):
+        try:
+            temporary.replace(OUTPUT)
+            return
+        except OSError:
+            if attempt == 9:
+                raise
+            time.sleep(0.2)
 
 
 def structural(stage, gripper_path):
@@ -119,7 +134,7 @@ def validate_all(report):
                         {"code": i.code, "message": i.message, "at": str(i.at), "severity": str(i.severity)}
                         for i in issues}.values())}
             report["validation"][f"{scope}/{variant}"] = item
-            OUTPUT.write_text(json.dumps(report, indent=2, default=str) + "\n", encoding="utf-8")
+            save_report(report)
             print("VALIDATED", scope, variant, json.dumps(item["features"]), flush=True)
 
 
@@ -278,7 +293,7 @@ def run_behavior(report, scopes=("standalone", "station")):
                 report["behavior"][key] = first
             except Exception:
                 report["behavior"][key] = {"error": traceback.format_exc()}
-            OUTPUT.write_text(json.dumps(report, indent=2, default=str) + "\n", encoding="utf-8")
+            save_report(report)
             print("SIMULATED", key, json.dumps(report["behavior"][key]), flush=True)
 
 
@@ -323,7 +338,7 @@ def main():
         report["runner_error"] = traceback.format_exc()
         raise
     finally:
-        OUTPUT.write_text(json.dumps(report, indent=2, default=str) + "\n", encoding="utf-8")
+        save_report(report)
 
 
 if __name__ == "__main__":

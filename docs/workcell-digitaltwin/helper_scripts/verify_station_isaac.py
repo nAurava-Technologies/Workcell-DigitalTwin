@@ -84,7 +84,8 @@ def main():
         report["runner_error"] = traceback.format_exc()
         raise
     finally:
-        OUTPUT.write_text(json.dumps(report, indent=2, default=str) + "\n", encoding="utf-8")
+        gripper.OUTPUT = OUTPUT
+        gripper.save_report(report)
 
 
 if __name__ == "__main__":

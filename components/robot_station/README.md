@@ -1,5 +1,10 @@
 # Composed robot station
 
+Current validation status (2026-10-06): see the
+[repository validation report](../../docs/simready/final_simready_validation_report.md).
+Full SimReady conformance is not achieved. Measurements dated 2026-10-02 below
+are historical and must not override newer runtime failures.
+
 `robot_station.usd` represents a stationary installation. The assembly removes
 `PhysicsRigidBodyAPI` from the referenced pedestal mesh while preserving its
 collision API and geometry. The standalone pedestal source remains unchanged.

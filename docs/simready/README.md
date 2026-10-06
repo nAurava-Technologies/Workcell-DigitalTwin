@@ -7,7 +7,7 @@ This directory contains two distinct documentation tracks for establishing, audi
 ```text
 docs/simready/
 ├── README.md                              # This directory guide
-├── final_simready_validation_report.md    # 🟢 Authoritative final validation report
+├── final_simready_validation_report.md    # Measured validation results and remaining failures
 │
 ├── standalone/                            # Standalone Human & Engineering Guide
 │   ├── README.md                          # Comprehensive manual: architecture, specs & pipeline
@@ -28,7 +28,7 @@ docs/simready/
 
 ## 🏆 Final Validation Report
 * **Link:** [`final_simready_validation_report.md`](./final_simready_validation_report.md)
-* **Status:** 🟢 **100% SimReady Compliant across all 7 component props, 0 remote S3 URLs, 0 broken material bindings, unified single articulation root, and 100% valid digital twin composition.**
+* **Status:** **Full SimReady conformance is not achieved.** See the report for fresh Neutral/Isaac profile evidence, static-floor exceptions, runtime results, and outstanding checks.
 
 ---
 

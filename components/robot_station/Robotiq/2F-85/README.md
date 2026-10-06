@@ -1,5 +1,9 @@
 # Robotiq 2F-85 conditioning and verification
 
+For the 2026-10-06 Neutral-profile and mounted runtime rerun, see the
+[current repository report](../../../../docs/simready/final_simready_validation_report.md).
+Historical behavioral passes below are not a current full SimReady verdict.
+
 The USD entry point is `simready_isaac_usd/Robotiq_2F_85.usda`. The default physics
 variant remains `Physx_Mimic`. Changes on 2026-10-02 normalize local USD reference,
 payload, and sublayer paths to explicit `./` paths and remove collision APIs and

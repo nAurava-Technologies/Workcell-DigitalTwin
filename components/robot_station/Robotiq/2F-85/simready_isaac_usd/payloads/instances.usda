@@ -348,7 +348,7 @@
                         {
                             def Material "Pumice" (
                                 instanceable = true
-                                prepend references = @./base.usda@</Robotiq_2F_85/VisualMaterials/Pumice>
+                                prepend references = @./materials.usda@</Materials/Pumice>
                             )
                             {
                             }
@@ -487,14 +487,14 @@
                         {
                             def Material "Cod_Gray" (
                                 instanceable = true
-                                prepend references = @./base.usda@</Robotiq_2F_85/VisualMaterials/Cod_Gray>
+                                prepend references = @./materials.usda@</Materials/Cod_Gray>
                             )
                             {
                             }
 
                             def Material "Periwinkle_Gray" (
                                 instanceable = true
-                                prepend references = @./base.usda@</Robotiq_2F_85/VisualMaterials/Periwinkle_Gray>
+                                prepend references = @./materials.usda@</Materials/Periwinkle_Gray>
                             )
                             {
                             }
@@ -901,7 +901,7 @@
                         {
                             def Material "Cod_Gray" (
                                 instanceable = true
-                                prepend references = @./base.usda@</Robotiq_2F_85/VisualMaterials/Cod_Gray>
+                                prepend references = @./materials.usda@</Materials/Cod_Gray>
                             )
                             {
                             }

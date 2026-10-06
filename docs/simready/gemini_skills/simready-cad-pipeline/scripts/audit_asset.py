@@ -128,20 +128,27 @@ def audit_asset(asset_path: Path, profile_id: str, profile_version: str, foundat
         is_optional = False
         notes = ""
         if is_prop_profile and feat_id == "FET004_BASE_NEUTRAL":
-            is_optional = True
+            # The project exception covers only absent multibody structure on
+            # single-body props, never unrelated physics failures in FET004.
+            is_optional = passed or set(failing_reqs) == {"RB.MB.001"}
             if not passed and set(failing_reqs) == {"RB.MB.001"}:
-                notes = "Single-body prop satisfies prop physics; multi-body joints optional."
+                notes = "Project single-body exception; raw multibody finding retained."
             elif passed:
                 notes = "Multi-body articulation verified."
+            else:
+                is_overall_compliant = False
         elif not passed:
             if feat_id.startswith("FET022"):
-                notes = "Requires Omniverse Kit / Isaac Sim runtime with pxr.PhysxSchema loaded."
-            elif feat_id.startswith("FET021"):
-                notes = "Pre-validated in Isaac Sim runtime (telemetry in customLayerData)."
-            elif feat_id.startswith("FET024"):
-                notes = "Requires Omniverse Kit PhysX runtime non-adjacent clearance."
-            elif feat_id.startswith("FET100"):
-                notes = "Isaac Sim composition schema verified in Isaac Sim environment."
+                try:
+                    from pxr import PhysxSchema
+                    schema_available = hasattr(PhysxSchema, "JointStateAPI")
+                except ImportError:
+                    schema_available = False
+                notes = ("Joint-state schemas available; inspect actual rule findings."
+                         if schema_available else
+                         "Joint-state environment unavailable; rerun with Isaac Sim PhysxSchema. No pass inferred.")
+            elif feat_id.startswith(("FET021", "FET024", "FET100")):
+                notes = "Validation failed; embedded telemetry is not evidence of a current pass."
             is_overall_compliant = False
 
         summary[feat_id] = {
